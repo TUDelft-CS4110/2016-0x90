@@ -11,6 +11,7 @@ This is the private repository for Team 0x90.
 |  **Date**                             |  **Description**                                                                   |
 |---------------------------------------|------------------------------------------------------------------------------------|
 |  [2016-02-12](minutes/2016-02-12.md)  |  Introduction and topic decision.                                                  |
+|  [2016-02-17](minutes/2016-02-17.md)  |  Plan for the summary.                                                             | 
 	
 ## Topic
 **Automated Test Case Generation**
