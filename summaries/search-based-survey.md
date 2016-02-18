@@ -189,3 +189,30 @@ Combined Approaches make use of both branch distance and control information for
 The technique suffers a bit from local optima, but this can be resolved by using a form of *approximation level*.
 The result looks quite a bit like the Control-Oriented approach, but by using branch distance calculations the objective function is greatly improved.
 
+#### Objective Functions for Different Structural Coverage Criteria
+Structural criteria are divided into four categories, where the general objective function is defined as: `approach_level + m_branch_dist`.
+These two variables depends on the coverage type in question.
+
+**Node-Oriented:**
+Aim to cover specific nodes of the control flow graph.
+
+**Path-Oriented:**
+Require the execution of specific paths through the control flow graph.
+
+**Node-Path-Oriented:**
+Include branch coverage and LCSAJ (linear code sequence and jump) coverage.
+
+**Node-Node-Oriented:**
+Aim to execute a certain sequnece of nodes through the control flow graph, without the specification of a concrete path between each node.
+
+#### Control-Related Problems for Objective Functions
+A major problem is covering nested structures within loops, which require a large number of iterations.
+Some approaches try to resolve this by saying that the branches that miss the target in iterations of the loop as if they were critical branches.
+However this leads to penalisation of individuals in the first iteration of the loop.
+
+A second problem is the assignment of approach levels for some classes of programs with unstructured control flows.
+A solution to this is to use *optimistic* or *pessimistic* approach level allocation strategies.
+In an optimistic strategy, a control dependent branching node is allocated its approach level on the basis of the shortest control depndent path from itself to the target node.
+In a pessimistic strategy, a branching node is allocated its approach level on the basis of the longest control dpendent path to the target node.
+Both strategies have different effects on the progress of the search, but it still remains an open problem as to which strategy works the best in general.
+
