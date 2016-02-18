@@ -178,10 +178,12 @@ A path is chosen and the relevant branch predicates are extracted. A Genetic Alg
 Since this technique requires rigid constraints, the chance of getting stuck in local optima is high.
 It would be better if more feedback could be provided via the objective function.
 This is where control oriented approaches come into play.
+
 **Control-Oriented Approaches**:
 in this technique, the objective function considers branching nodes that need to be executed to cover a desired structure.
 This technique needs the control dependence graph of the test subject to identify each of these branching nodes.
 The problem with the Control-Oriented Approach is that the objective function gives no guidance on how to change the flow of execution at control dependent nodes, since no distance information is exploited from branch predicates.
+
 **Combined Approaches**
 Combined Approaches make use of both branch distance and control information for the objective function.
 The technique suffers a bit from local optima, but this can be resolved by using a form of *approximation level*.
