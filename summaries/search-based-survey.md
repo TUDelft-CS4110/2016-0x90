@@ -132,3 +132,26 @@ Instead of performing local searches, this technique can also use global search 
 
 Main problem: data dependencies are not taken into account. An attempt to solve this solution is done in the Chaining Approach
 
+##### The Chaining Approach
+Chaining uses an *event sequence* as a intermediate means of deciding the type of path required to reach the target node. 
+An *event sequence* is a succession of nodes that should be executed.
+Initial sequence consists of *start* and *target* nodes.
+This sequence is filled in once the test data search encounters difficulties.
+
+**Event Sequence:** `<e_1, e_2, ... e_k>`, where `e_i = (n_i, C_i)` where `n_i in N` is a program node and `C_i` is a set of variables referred to as a constraint set.
+
+Every two adjacent events should not have variables in the constraint set modified, this ensures that a *definition-clear path* must be taken from one node to the other node.
+
+A branch is *critical* if there does not exist a definition-clear path between the two program nodes, even though such a path does exist via another branch.
+A branch is *semi-critical* if it is not-critical, the target node is control dependent on path p and there does not exist an acyclic definition-clear path.
+A branch is *non-essential* if it is none of the above.
+
+When inputs cannot be found to change the flow of control such that a critical branch is avoided, the starting node is declared as being a problem node.
+The technique then searches for alternative event sequences.
+
+The Chaining Approach organises generate event sequences in a tree. 
+The root being the initial event sequence and subsequent nodes are the resulting event sequences of all the corresponding problem nodes.
+Backtracking techniques of depth *n* can be used in more complicated instances, to look for last definition statements of variables.
+The tree is explored using a depth-first strategy, with a specified depth limit.
+This technique covers a larger set of programs than the Goal-Oriented Approach, but as search times increase, local search can become trapped in difficult search spaces.
+
