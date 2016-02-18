@@ -86,7 +86,7 @@ Dynamic Domain Reduction is a static analysis technique that starts with domains
 *This technique still suffers from difficulties with computed storage locations, loops and non-ordinal variable types(e.g. Enums).*
 
 ### Dynamic Structural Test Data Generation
-*Dynamic methods* use some input to execute a program and uses intrumentation to observer the results.
+*Dynamic methods* use some input to execute a program and uses instrumentation to observer the results.
 Many of the issues regarding Symbolic Execution are resolved by directly resolving e.g. pointer values and array subscripts.
 
 #### Random Testing
@@ -95,7 +95,7 @@ When using this technique, code that has low probability of being executed is of
 
 ##### Applying Local Search
 In the Local Search technique, the tester selects a path through the program and produces a straight-line version of that path.
-Path constraints are constructed with constant for each contraint estimating the satisfiability of the constraint.
+Path constraints are constructed with constant for each constraint estimating the satisfiability of the constraint.
 A function *f* is constructed out of all of these constraints.
 *f* provides an estimate of the satisfiability of all constraints.
 Using numerical maximisation techniques, the input values are maximized to satisfy as many constraints as possible.
@@ -113,5 +113,22 @@ These techniques suffer however from one main problem: the final solution is hig
 A solution to this is the creation of an *influences graph*, that is created via dynamic data flow analysis and is used to detect which input variable influence the outcome at a branching node.
 Additionally a risk analysis on the input variables can be performed to decided if they could violate the already successful sub-path.
 
-##### The Goal Oriented Approach
+##### The Goal-Oriented Approach
+A Goal-Oriented Approach is a technique with a set goals(e.g. statement coverage).
+Branches are prioritized by analyzing the control flow graph.
+
+A branch is *critical*, when if chosen, the control flow won't reach the target node.
+The objective function is then associated with the alternative branch.
+The alternating variable search method is used, if the required inputs cannot be found, the process terminates with the target unexecuted.
+
+A branch is *semi-critical* if it leads to a target node via the back edge of a loop. The alternative branch will lead directly to the target node.
+Inputs for this are sought, but when they are not found, the alternative branch is iterated next.
+
+A branch is *non-essential*, when it is neither *critical* nor *semi-critical*.
+These branches do not effect the reachability of target node and are thus are allowed to be executed.
+
+The Goal-Oriented Approach suffers from similar problems as the Local Search approach. The removal of the requirement to select a path introduces new ways in which the test data search can fail.
+Instead of performing local searches, this technique can also use global search with Genetic Algorithms, but even these have their problems.
+
+Main problem: data dependencies are not taken into account. An attempt to solve this solution is done in the Chaining Approach
 
