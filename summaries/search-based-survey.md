@@ -161,4 +161,29 @@ Boolean, enumerated types and all other order insignificant variables are consid
 The objective function is the branch distance of the required branch when control flow diverges from the intended path. 
 To reduce search becoming stuck in a local optima, the restriction that a solution must conform to an already existing sub-path is lifted.
 
+#### Applying Evolutionary Algorithms
+##### A Classification of Techniques
+###### Coverage-Oriented Approaches
+Coverage-Oriented Approaches work by rewarding on the basis of covered program structures.
+Search tends to reward long paths through the test subject.
+When using this technique, generally there is a lack of guidance provided for structures, which are only executed with values from a small portion of the overall input domain.
+Therefore it is difficult to expect full coverage of these techniques for any non-trivial programs.
+
+###### Structure-Oriented Approaches
+Structure-Oriented Approaches take a *divide and conquer* approach to obtaining full coverage. In this approach, a separate search is done for each uncovered element.
+
+**Branch-Distance-Oriented Approaches**: 
+Branch-Distance-Oriented Approaches use branch predicates in combination with Random Search or Genetic Algorithms for the more difficult cases.
+A path is chosen and the relevant branch predicates are extracted. A Genetic Algorithm is then used to find input data that satisfies all the branch predicates at once.
+Since this technique requires rigid constraints, the chance of getting stuck in local optima is high.
+It would be better if more feedback could be provided via the objective function.
+This is where control oriented approaches come into play.
+**Control-Oriented Approaches**:
+in this technique, the objective function considers branching nodes that need to be executed to cover a desired structure.
+This technique needs the control dependence graph of the test subject to identify each of these branching nodes.
+The problem with the Control-Oriented Approach is that the objective function gives no guidance on how to change the flow of execution at control dependent nodes, since no distance information is exploited from branch predicates.
+**Combined Approaches**
+Combined Approaches make use of both branch distance and control information for the objective function.
+The technique suffers a bit from local optima, but this can be resolved by using a form of *approximation level*.
+The result looks quite a bit like the Control-Oriented approach, but by using branch distance calculations the objective function is greatly improved.
 
