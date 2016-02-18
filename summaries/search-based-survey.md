@@ -155,3 +155,10 @@ Backtracking techniques of depth *n* can be used in more complicated instances, 
 The tree is explored using a depth-first strategy, with a specified depth limit.
 This technique covers a larger set of programs than the Goal-Oriented Approach, but as search times increase, local search can become trapped in difficult search spaces.
 
+#### Applying Simulated Annealing
+For the "neighbourliness" structure for integer and real variables is defined as the range of values around each individual value.
+Boolean, enumerated types and all other order insignificant variables are considered as neighbours.
+The objective function is the branch distance of the required branch when control flow diverges from the intended path. 
+To reduce search becoming stuck in a local optima, the restriction that a solution must conform to an already existing sub-path is lifted.
+
+
