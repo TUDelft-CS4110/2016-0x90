@@ -241,4 +241,9 @@ In theses situations an input sequence is required to cover certain structures.
 
 A further problems with state-based systems is their tendency to make use of flag and enumeration variables to control the current state.
 
+#### Use of Evolutionary Algorithms: Encodings and Operators
+Early work used binary iencoding, but it is common that variables will often only have valid values within a subset of possible bit patterns at the binary level.
+Using evolutionary algorithms on binary encoding can cause corruption with restricted types in the crossover and mutation operators.
+This problem can be resolved by using real-valued encodings, which removes the need to encode and decode the input vector into and out of a binary format and prevents the variables from going out of range.
+
 
