@@ -257,3 +257,23 @@ Problems that need further research:
 
 Future fields of research: programs using information from files and sockets.
 
+## Functional (Black-Box) Testing
+Functional (Black-Box) Testing uses metaheuristic search techniques to test the logical behaviour of a system, as described by some form of specification.
+
+### Generating Test Data from a Z Specification
+Z specification describes the state space of the system in a schema consisting of disjunctions containing a conjunction of input variables and predicates.
+Each disjunct is considered as a *route* through the system. Genetic Algorithms are used to search for test data for each route.
+Each conjunct is evaluated using a distance based approach, in a similar fashion to the branch distance calculations used in Structural testing.
+The overall fitness of the route is the summation of the distances for each of its conjuncts.
+
+### Testing Specification Conformance
+Conformance of the implementation to its specification is checked by executing the test object with the generated test data, and then validating the output against the specification.
+A failure is found when an input situation is discovered that satisfies the pre-condition of a function, but for which the outputs violate the post-condition.
+
+### Future Directions for Search-based Functional Testing
+Search-based functional testing is less active compare to structural testing.
+A few downsides:
+ - A mapping needs to be provided from the abstract model of the specification to the concrete form of the implementation.
+ - Can consist of an extremely large search space.
+ - Test sequences may need to be generated to put the system into some valid state in  order for the property of interest to be test.`
+
