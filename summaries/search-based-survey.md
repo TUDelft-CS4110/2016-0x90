@@ -203,7 +203,7 @@ Require the execution of specific paths through the control flow graph.
 Include branch coverage and LCSAJ (linear code sequence and jump) coverage.
 
 **Node-Node-Oriented:**
-Aim to execute a certain sequnece of nodes through the control flow graph, without the specification of a concrete path between each node.
+Aim to execute a certain sequence of nodes through the control flow graph, without the specification of a concrete path between each node.
 
 #### Control-Related Problems for Objective Functions
 A major problem is covering nested structures within loops, which require a large number of iterations.
@@ -212,7 +212,23 @@ However this leads to penalisation of individuals in the first iteration of the 
 
 A second problem is the assignment of approach levels for some classes of programs with unstructured control flows.
 A solution to this is to use *optimistic* or *pessimistic* approach level allocation strategies.
-In an optimistic strategy, a control dependent branching node is allocated its approach level on the basis of the shortest control depndent path from itself to the target node.
-In a pessimistic strategy, a branching node is allocated its approach level on the basis of the longest control dpendent path to the target node.
+In an optimistic strategy, a control dependent branching node is allocated its approach level on the basis of the shortest control dependent path from itself to the target node.
+In a pessimistic strategy, a branching node is allocated its approach level on the basis of the longest control dependent path to the target node.
 Both strategies have different effects on the progress of the search, but it still remains an open problem as to which strategy works the best in general.
+
+#### Branch-Distance-Related Problems for Objective Functions
+The global search techniques still have some problems in hostile search landscapes containing large plateaux or several local optima.
+Plateaux are for example really easily created by a simple "flag" variable.
+With these types of flags, the evolutionary search performs no better than random search.
+
+A solution to this is by removing a flag from the branch predicate by performing program transformation.
+This is however not always possible.
+
+Alternatively a sequence of nodes to be executed prior to the branch predicate containing the flag can be identified.
+However, the approach has problems avoiding unrequired assignments to flags within loop bodies.
+
+A second problem is that there exists the possibility that the branch distance calculation deceives the search.
+
+A third problem can occur with nested branch predicates where a solution for subsequent conditions must be found without violating any of the earlier conditions.
+
 
