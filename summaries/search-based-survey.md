@@ -246,4 +246,14 @@ Early work used binary iencoding, but it is common that variables will often onl
 Using evolutionary algorithms on binary encoding can cause corruption with restricted types in the crossover and mutation operators.
 This problem can be resolved by using real-valued encodings, which removes the need to encode and decode the input vector into and out of a binary format and prevents the variables from going out of range.
 
+### Future Directions for Search-based Structural Testing
+Problems that need further research:
+ - Flag and enumeration variables
+ - Unstructured control flow and state behaviour
+ - Test data cannot be found
+ - Does not support programs involving strings and dynamic data structures such as lists, sets, etc
+ - Problems with dynamic types including comparison of pointer locations.
+ - Complications in object-oriented system due to internal states and polymorphic types.
+
+Future fields of research: programs using information from files and sockets.
 
