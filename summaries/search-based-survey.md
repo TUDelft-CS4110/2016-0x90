@@ -293,4 +293,32 @@ Problem here was that the Test Data was often not possible when using the softwa
  - Component-reuse Testing: searching for test data that causes a component to be called where its usage assumptions are broken.
  - Black-Box assertions used as test oracles, offering further automation.
 
+## Non-Functional Testing
+In this area there is a large concentration on best and worst-case execution times of real-time systems.
+
+### Execution Time Testing
+Execution time testing involves attempting to find the worst-case execution time (WCET) or the best-case execution time (BCET) of a system in order to determine whether it is compliant with its timing constraints.
+
+#### Static analysis
+Static analysis can be used to derive WCET and BCET. This is done by examining the possible execution paths and modelling timing behaviour at the hardware level.
+The primary step needs assistance from the programmer, since information is required regarding the infeasible paths, and the maximum number of iterations for each loop appearing in the code.
+Major problems with this technique are the possibility of simulation errors and the need for human involvement.
+
+#### Search-based Execution Time Testing
+The objective function is the execution time of the system as executed with some input. The search attempts to maximize (WCET) or minimize (BCET).
+Search-based techniques cannot guarantee the actual WCET or BCEt, but the best found result can be used to form an interval with the time obtained from static analysis within which the actual extreme execution time most probably lies.
+
+#### Future Directions for Search-based Execution Time Testing
+It is important to look into using a combination of static analysis and search-based techniques.
+Search-based techniques could be used to verify path feasibility for static analysis.
+
+Further it is possible to combine the objective function with those used by structural test data generation to ensure that timing behavior involving all branches is explored.
+Especially procedural code has been researched, it would be interesting extending these techniques to object-oriented software.
+
+
+### Future Directions for Search-based Non-Functional Testing
+Future research areas include:
+ - Resource usage: memory, storage requirements.
+ - Memory leak detection
+ - Stress testing, security testing, etc.
 
