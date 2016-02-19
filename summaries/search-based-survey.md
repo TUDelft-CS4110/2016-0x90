@@ -322,3 +322,18 @@ Future research areas include:
  - Memory leak detection
  - Stress testing, security testing, etc.
 
+## Conclusions
+*Symbolic Exectuion* evaluates program code in order to build up a system of constraints describing the test goal.
+Becomes problematic when using loop and in cases where computer storage location need to be determined.
+Alternatively *dynamic approaches* execute the program with some input and examining the effects via some form of instrumentation.
+Helps resolve problems we saw with symbolic execution such as pointer locations, which are known at run-time.
+
+Metaheursitic Techniques allow a definition of an objective function, which is used to guide test data generation.
+Two main types of objectives: *Coverage-Oriented* (objective function: number of program structures executed) and *Structure-Oriented* (objective function: guides search to cover each individual structural element)
+
+*Search-based test data generation approaches*  to *functional testing* have focussed on finding inputs such that the program does not meet the specifications. 
+
+*Grey-box* test data generation approaches combine methods used in generating structural and functional testing.
+Structure-oriented white-box testing techniques can be used to attempt to induce violations of assertions
+
+
