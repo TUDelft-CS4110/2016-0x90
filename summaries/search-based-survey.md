@@ -275,5 +275,22 @@ Search-based functional testing is less active compare to structural testing.
 A few downsides:
  - A mapping needs to be provided from the abstract model of the specification to the concrete form of the implementation.
  - Can consist of an extremely large search space.
- - Test sequences may need to be generated to put the system into some valid state in  order for the property of interest to be test.`
+ - Test sequences may need to be generated to put the system into some valid state in  order for the property of interest to be test.
+
+## Grey-box Testing
+Grey-box testing ocmbines both structural and functional information for the purpose of testing.
+
+### Assertion Testing
+Assertions specify constraints that apply to some state of a computation. When an assertion evaluates to false, an error has been found in the program.
+The assertion code is formed into a function with the original assertion comment region replaced with a call to that function.
+The goal is then to execute a false assignment to the assert variable statement within the function, and thereafter avoiding all true assignment to the variable.
+
+### Exception Condition Testing
+Similar idea as Assertion Testing, but this technique tries to trigger exceptions.
+Problem here was that the Test Data was often not possible when using the software and thus the violations were false positives.
+
+### Future Directions for Search-based Grey-Box Testing
+ - Component-reuse Testing: searching for test data that causes a component to be called where its usage assumptions are broken.
+ - Black-Box assertions used as test oracles, offering further automation.
+
 
