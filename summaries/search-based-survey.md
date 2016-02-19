@@ -231,4 +231,14 @@ A second problem is that there exists the possibility that the branch distance c
 
 A third problem can occur with nested branch predicates where a solution for subsequent conditions must be found without violating any of the earlier conditions.
 
+#### Applying Variable Dependency Analysis
+Variable dependence analysis allows you to determine the subset of input variables that cannot affect the outcome at a branch predicate.
+This allows for reduction of the search space.
+
+#### Generating Input Sequences
+Another problem for structural test data generation are test objects with internal states.
+In theses situations an input sequence is required to cover certain structures.
+
+A further problems with state-based systems is their tendency to make use of flag and enumeration variables to control the current state.
+
 
