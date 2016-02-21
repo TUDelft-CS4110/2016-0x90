@@ -22,9 +22,9 @@ Many techniques (such as the one mentioned in the previous papers) are already b
 One example of such drawback is when applying the work mentioned in Paper 2, handling the growth/reduction of generated test cases requires quite a bit of effort. 
 Additionally, there is mention of a technique that also takes into account collateral coverage, which is represent the amount of collateral targets that are accidentally covered. 
 However, no particular heuristic exists to help covering these targets.  
-The approaches mentioned so far all target a single test goal at a time, which is the predominent method. 
+The approaches mentioned so far all target a single test goal at a time, which is the predominant method. 
 But there is one that uses a single sequence of function calls to maximize the number of covered branches while watching out for the length of such a test case. 
-A drawback of such approach is that there can be conflicting testing goals and it might be impossible to cover all of them with a signle test sequence, regardless of its length.  
+A drawback of such approach is that there can be conflicting testing goals and it might be impossible to cover all of them with a single test sequence, regardless of its length.  
 Another method proposed optimizes entire test suites with a search algorithm with respect to mutation analysis. 
 However, the strong limitation is having to manually choose and fix the length of the test cases, which does not evolve during the search.  
 To deal with these drawbacks, the paper therefore approaches a new method with the intent to satisfy the chosen coverage criterion with the smallest possible test suite, which makes use of a search algorithm applied on a population of test suites. 
@@ -71,7 +71,7 @@ Crossover generates two offsprings from two parent test suites based on a random
 For the first offspring, the *a*th test case from the first parent is combined with the (1 - *a*)th test case from the second parent. 
 For the second offspring, the *a*th test case from the second parent is combined with the (1 - *a*)th test case from the first parent. 
 Because the test cases are independent, this will always generate valid offspring test suites. 
-With this set up, no offspring will have more test cases than the larget of its parents. 
+With this set up, no offspring will have more test cases than the largest of its parents. 
 
 #### Mutation
 There are three types of mutations:
@@ -79,14 +79,14 @@ There are three types of mutations:
 - **Change**, which changes the value of primitive inputs.
 - **Insert**, which inserts a new statement at a random position in a test case. 
 
-Each of these types has probability 1/3 of occuring. 
+Each of these types has probability 1/3 of occurring. 
 On average, only one of them is applied, but it could be that all of them are applied. 
 When a test suite T is mutated, each of its test cases has equal probability of being mutated 1/|T|. 
 On average, only one test case mutates.
 
 ## EvoSuite
 The EvoSuite tool implements the approached presenting in this paper, for developing JUnit test suites for Java code. 
-This tool works at the byte-code level and collects all information for the test cluster from the byte-code via Java Reflection.
+This tool works at the bytecode level and collects all information for the test cluster from the byte-code via Java Reflection.
 This means that EvoSuite could also be used for other programming languages that compile to Java byte-code (such as Scala or Groovy). 
 Furthermore, EvoSuite treats cases from a switch.case construct like an individual if-condition, making the number of branches at byte-code level large than at the source code level.  
 During test suite generation, to produce test cases that are compatible with JUnit, EvoSuite accesses only the public interfaces for test generation; any subclasses are also considered part of the unit under test, to allow testing of abstract classes. 
@@ -99,7 +99,7 @@ However, container classes must be identified manually, but the EvoSuite team is
 Additionally, there are security measures that need to be undertaken during test execution.
 There is a security manager that controls what permissions are granted. 
 This is useful when the program requires to open up a network connection, or accesses the filesystem for some purpose. 
-It is not desireable to have the test suite opening up a random network connection, or manipulating the filesystem in random ways. 
+It is not desireable to have the test suite opening up a random network connection, or manipulating the file system in random ways. 
 
 ## Difficulties
 As previously mentioned, the EvoSuite tools has difficulties dealing with Java Generics, and security concerns affect the coverage goal the tool can fulfill.  
@@ -114,17 +114,18 @@ But if a much larger test suite would lead to only slightly better coverage, the
 Moreover, this performance measure does not take into account how difficult it would be for a developer to manually evaluate the test cases for writing assertions.  
 Internal validity is affected by the fact that this approach makes use of randomized algorithms, which are affected by chance.
 Moreover, the entire EvoSuite framework was carefully tested, but testing alone cannot prove the absence of defects.
-Experiments were rigourously designed to test EvoSuite for internal validity, but these experiments made use of configurations that were suitable for that sort of experiment. 
+Experiments were rigorously designed to test EvoSuite for internal validity, but these experiments made use of configurations that were suitable for that sort of experiment. 
 EvoSuite claims to outperform other methods in these configurations, but it could well be that other parameter settings actually decrease the performance of the tool.  
 The threat to external validity exists because only certain types of software have been tested with EvoSuite and it might not work on others. 
-Also, EvoSuite makes use of a GA for optimizing entire test suites, but the superiority of EvoSuite may not hold when dealing with other search algoritms. 
+Also, EvoSuite makes use of a GA for optimizing entire test suites, but the superiority of EvoSuite may not hold when dealing with other search algorithms. 
 
 ## Conclusion
 Although the technique described in the paper and EvoSuite might not be superior to all testing tools, the paper does show that whole test suite generation is superior to a traditional strategy targeting one goal at a time. 
 Whole test suite generation achieves **higher coverage** and produces smaller **test suites**.  
-It is also proven in this paper that the technique will always find a solution for the optimal test suite, meaning that there will never be a case where the algorithm runs forever by being stuck in the search space.  
-Overall, this technique offers a great way for testing an entire code bas, where testing oracles can be added in terms of assertions. 
+It is also proven in this paper that the technique will always converge and therefore find a solution for the optimal test suite, meaning that there will never be a case where the algorithm runs forever by being stuck in the search space.  
+Overall, this technique offers a great way for testing an entire code base, where testing oracles can be added in terms of assertions. 
 However, the oracle problem is still a difficult obstacle, because even when keeping the tests small, what guarantees the correctness of these tests and the difficulty to comprehend them?
 
 #### Next Paper
 Will be chosen soon.
+
