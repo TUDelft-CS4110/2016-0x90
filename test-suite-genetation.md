@@ -116,9 +116,15 @@ Internal validity is affected by the fact that this approach makes use of random
 Moreover, the entire EvoSuite framework was carefully tested, but testing alone cannot prove the absence of defects.
 Experiments were rigourously designed to test EvoSuite for internal validity, but these experiments made use of configurations that were suitable for that sort of experiment. 
 EvoSuite claims to outperform other methods in these configurations, but it could well be that other parameter settings actually decrease the performance of the tool.  
-The threat to external validity exists because only certain types of software have been tested with EvoSuite and it might not work on others. Also, EvoSuite makes use of a GA for optimizing entire test suites, but the superiority of EvoSuite may not hold when dealing with other search algoritms. 
+The threat to external validity exists because only certain types of software have been tested with EvoSuite and it might not work on others. 
+Also, EvoSuite makes use of a GA for optimizing entire test suites, but the superiority of EvoSuite may not hold when dealing with other search algoritms. 
 
 ## Conclusion
+Although the technique described in the paper and EvoSuite might not be superior to all testing tools, the paper does show that whole test suite generation is superior to a traditional strategy targeting one goal at a time. 
+Whole test suite generation achieves **higher coverage** and produces smaller **test suites**.  
+It is also proven in this paper that the technique will always find a solution for the optimal test suite, meaning that there will never be a case where the algorithm runs forever by being stuck in the search space.  
+Overall, this technique offers a great way for testing an entire code bas, where testing oracles can be added in terms of assertions. 
+However, the oracle problem is still a difficult obstacle, because even when keeping the tests small, what guarantees the correctness of these tests and the difficulty to comprehend them?
 
 #### Next Paper
-blablabla
+Will be chosen soon.
