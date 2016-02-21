@@ -60,7 +60,36 @@ The fitness value is measured by executing all tests in a given test suite, and 
 The branch distance is a heuristic to guide the search for input data to solve constraints in the logical predicates of the branches.
 The fitness function estimates how close a test suite is to covering *all* branches of a program, and is expressed as a function of the test suite that takes the total number of methods in the program, subtracts the number of executed methods, and adds the sum of all branch distance results since the first generated test suite. 
 
+### Rank Selection, Crossover, and Mutation
+#### Rank Selection
+Rank selection is based on the fitness function. In case of ties, better ranks are assigned to smaller test suites. 
+
+#### Crossover
+Crossover generates two offsprings from two parent test suites based on a random value *a* from [0, 1]. 
+For the first offspring, the *a*th test case from the first parent is combined with the (1 - *a*)th test case from the second parent. 
+For the second offspring, the *a*th test case from the second parent is combined with the (1 - *a*)th test case from the first parent. 
+Because the test cases are independent, this will always generate valid offspring test suites. 
+With this set up, no offspring will have more test cases than the larget of its parents. 
+
+#### Mutation
+There are three types of mutations:
+- **Remove**, which removes test cases in a test suite with a certain probability.
+- **Change**, which changes the value of primitive inputs.
+- **Insert**, which inserts a new statement at a random position in a test case. 
+
+Each of these types has probability 1/3 of occuring. 
+On average, only one of them is applied, but it could be that all of them are applied. 
+When a test suite T is mutated, each of its test cases has equal probability of being mutated 1/|T|. 
+On average, only one test case mutates.
+
 ## EvoSuite
+The EvoSuite tool implements the approached presenting in this paper, for developing JUnit test suites for Java code. 
+This tool works at the byte-code level and collects all information for the test cluster from the byte-code via Java Reflection.
+This means that EvoSuite could also be used for other programming languages that compile to Java byte-code (such as Scala or Groovy). 
+Furthermore, EvoSuite treats cases from a switch.case construct like an individual if-condition, making the number of branches at byte-code level large than at the source code level.  
+During test suite generation, to produce test cases that are compatible with JUnit, EvoSuite accesses only the public interfaces for test generation; any subclasses are also considered part of the unit under test, to allow testing of abstract classes. Before returning a test suite, the tool applies a simple minimization algorithm that removes each statement one at a time until all remaining statements contribute to the coverage. This contributes to reducing the amount and length of test cases.  
+There are a few language-related problems that are encountered by the EvoSuite tool. In particular, classes using Java Generics are problematic, as type erasure removes much of the useful information during compilation and all generic parameters are considered as Object. To overcome this problem, EvoSuite always inserts an Integer object into container classes, to cast returned Object instances back to Integer. However, container classes must be identified manually, but the EvoSuite team is working on it.  
+Additionally, there are security measures that need to be undertaken during test execution. There is a security manager that controls what permissions are granted. This is useful when the program requires to open up a network connection, or accesses the filesystem for some purpose. It is not desireable to have the test suite opening up a random network connection, or manipulating the filesystem in random ways. 
 ## Experiments and Results
 ## Drawbacks and Difficulties
 ## Conclusion
