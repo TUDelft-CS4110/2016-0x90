@@ -14,6 +14,8 @@ The goal of this paper is to therefore make such technology possible by achievin
 - Small yet representative test sets
 - Whole test suite generation
 
+This technology was made available through the EvoSuite framework. 
+
 ## Background Information
 To generate effective test cases, the guiding medium used most commonly is the code coverage criterion, which represents a finite set of coverage goals (e.g. branch coverage, path coverage, etc). 
 Many techniques (such as the one mentioned in the previous papers) are already being used by software engineers, but they all have certain drawbacks.  
@@ -46,7 +48,7 @@ Test cases contain statements, and each statement has a value and a type. This p
 - **Method** statements, which invoke methods on objects or call static methods.
 - **Assignment** statements, which assign values to array indices or to public member variables of objects, but do not define new values.
 
-The *test cluster* for a given system under test (SUT) defines the set of available classes, their public constructors, methods, and fields. 
+The *test cluster* for a given system under test defines the set of available classes, their public constructors, methods, and fields. 
 This chosen representation has a variable size for the test suite for one good reason: for a new software to test, the optimal number of test cases and their respective optimal length are not known, and need to be searched for. 
 
 ### Fitness Function
@@ -87,11 +89,35 @@ The EvoSuite tool implements the approached presenting in this paper, for develo
 This tool works at the byte-code level and collects all information for the test cluster from the byte-code via Java Reflection.
 This means that EvoSuite could also be used for other programming languages that compile to Java byte-code (such as Scala or Groovy). 
 Furthermore, EvoSuite treats cases from a switch.case construct like an individual if-condition, making the number of branches at byte-code level large than at the source code level.  
-During test suite generation, to produce test cases that are compatible with JUnit, EvoSuite accesses only the public interfaces for test generation; any subclasses are also considered part of the unit under test, to allow testing of abstract classes. Before returning a test suite, the tool applies a simple minimization algorithm that removes each statement one at a time until all remaining statements contribute to the coverage. This contributes to reducing the amount and length of test cases.  
-There are a few language-related problems that are encountered by the EvoSuite tool. In particular, classes using Java Generics are problematic, as type erasure removes much of the useful information during compilation and all generic parameters are considered as Object. To overcome this problem, EvoSuite always inserts an Integer object into container classes, to cast returned Object instances back to Integer. However, container classes must be identified manually, but the EvoSuite team is working on it.  
-Additionally, there are security measures that need to be undertaken during test execution. There is a security manager that controls what permissions are granted. This is useful when the program requires to open up a network connection, or accesses the filesystem for some purpose. It is not desireable to have the test suite opening up a random network connection, or manipulating the filesystem in random ways. 
-## Experiments and Results
-## Drawbacks and Difficulties
+During test suite generation, to produce test cases that are compatible with JUnit, EvoSuite accesses only the public interfaces for test generation; any subclasses are also considered part of the unit under test, to allow testing of abstract classes. 
+Before returning a test suite, the tool applies a simple minimization algorithm that removes each statement one at a time until all remaining statements contribute to the coverage. 
+This contributes to reducing the amount and length of test cases.  
+There are a few language-related problems that are encountered by the EvoSuite tool. 
+In particular, classes using Java Generics are problematic, as type erasure removes much of the useful information during compilation and all generic parameters are considered as Object. 
+To overcome this problem, EvoSuite always inserts an Integer object into container classes, to cast returned Object instances back to Integer. 
+However, container classes must be identified manually, but the EvoSuite team is working on it.  
+Additionally, there are security measures that need to be undertaken during test execution.
+There is a security manager that controls what permissions are granted. 
+This is useful when the program requires to open up a network connection, or accesses the filesystem for some purpose. 
+It is not desireable to have the test suite opening up a random network connection, or manipulating the filesystem in random ways. 
+
+## Difficulties
+As previously mentioned, the EvoSuite tools has difficulties dealing with Java Generics, and security concerns affect the coverage goal the tool can fulfill.  
+Additionally, there are a few threats to validity that must be considered when applying the technique described in this paper:
+- Construct validity
+- Internal validity
+- External validity
+
+Construct validity is compromised because the approach of "entire test suite" has some drawbacks over "one target at a time".
+Priority is given to coverage, and length of the test suite becomes a secondary goal. 
+But if a much larger test suite would lead to only slightly better coverage, then this test suite will be qualified as "more optimal", while this is clearly not the case. 
+Moreover, this performance measure does not take into account how difficult it would be for a developer to manually evaluate the test cases for writing assertions.  
+Internal validity is affected by the fact that this approach makes use of randomized algorithms, which are affected by chance.
+Moreover, the entire EvoSuite framework was carefully tested, but testing alone cannot prove the absence of defects.
+Experiments were rigourously designed to test EvoSuite for internal validity, but these experiments made use of configurations that were suitable for that sort of experiment. 
+EvoSuite claims to outperform other methods in these configurations, but it could well be that other parameter settings actually decrease the performance of the tool.  
+The threat to external validity exists because only certain types of software have been tested with EvoSuite and it might not work on others. Also, EvoSuite makes use of a GA for optimizing entire test suites, but the superiority of EvoSuite may not hold when dealing with other search algoritms. 
+
 ## Conclusion
 
 #### Next Paper
