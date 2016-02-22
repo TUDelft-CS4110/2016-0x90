@@ -4,26 +4,26 @@
 
 
 ## Automated Test Case Generation
-Consists of creating an object, changing the state of that object and method call with proper input values. 
-Unit tests of classes should include all possible constructor and method invocation in order all cases to be analyzed.
-Generic algorithms use chromosome encoding ensuring that for hard to reach code fragments test cases are implemented by creating sequence of program calls.
+Automated Test Case Generation consists of creating an object, changing the state of that object and proper method calls with matching corresponding values. 
+Unit tests of classes should include all possible constructors and method invocations in order to analyze all cases.
+Genetic algorithms use chromosome encoding ensuring that test cases for hard-to-reach code fragments are implemented by creating sequence of program calls.
 
-## Generic Algorithms for the Unit Testing of Classes
-Generic algorithms are broadly applied in testing procedural programs.
+## Genetic Algorithms for the Unit Testing of Classes
+Genetic algorithms are broadly applied in the testing of procedural programs.
 
 ### Unit testing of classes
-Unit testing of classes considers that each class being tested consists of constructor(s), method invocation within sertain set of input parameters
+Unit testing of classes considers that each class being tested consists of constructor(s), method invocation within certain set of input parameters
 
 ### Evolutionary testing
-Evolutionary testing requires certain steps to be implemented in the algorithm including definition of parameters, maximum execution time, targets, automatically generated tests.
-The algorithms resuts in gererating test cases that are properly defined for at lest one target. 
+Evolutionary testing requires certain steps to be implemented in the algorithm including a definition of parameters, maximum execution time, targets and automatically generated tests.
+The algorithms result in generating test cases that are properly defined for at least one target (e.g., branches). 
 
 ### Chromosomes
-Chromosomes includes number of input values to be used as parameters of methods and constructors that belong to a ceartain class.
+Chromosomes include a number of input values to be used as parameters of methods and constructors that belong to a certain class.
 The specification of chromosomes thus must include the specification of the methods and the proper sequence of parameters.
 
 ### Mutation operators
-By randomly selectiong mutation operators, chromosomes are being changed by the generic algorithm.
+By randomly selecting mutation operators, chromosomes are being changed by the genetic algorithm.
 #### Mutation of input value
 Randomly generated value replaces another with the same type.
 #### Constructor change
@@ -31,7 +31,7 @@ One of the constructors is randomly replaced.
 #### Insertion of method invocation
 New methods are generated with generated input values
 #### Removal of method invocation
-Randomly choosen methods are being removed.
+Randomly chosen methods are being removed.
 #### One-point crossover
 During a union of chromosomes at a randomly selected line, the confliction variables are being renamed, constructors are added or removed, methods are added or removed.
 
@@ -43,10 +43,10 @@ The following types for generated rules are applied:
 - Booleans (50% probability for true, and 50% for false)
 - Strings (a-zA-Z0-9) 
 
-##The Tool ETOC
-eToc tool(evolutionary Testing of classes) gives realisation of generic algorith for test case generation.
+##The Tool eToc
+The Evolutionary Testing of Classes tool (eToc) uses the genetic algorithm for test case generation in the terms of the Java language.
 It consists of the following components:
- 
+
 ###Branch instrumentor
 Branch instrumentor generates instrumented code where each control flow branch is individually described and traced in the process of execution. 
 
@@ -54,7 +54,7 @@ Branch instrumentor generates instrumented code where each control flow branch i
 Produces new chromosomes and modifies existing chromosomes according to method signatures. 
 
 ### Test case generator 
-Withinh the inner loop of the generic algorithm every test case identified by a chromosome is implemented.
+Within the inner loop of the genetic algorithm every test case identified by a chromosome is implemented.
 
 #### Test case executor
 After execution of test cases, a summary containing information of successfully passed test cases, as well as failed ones and not proper assertions, is being generated.
@@ -71,11 +71,12 @@ After that *Test case generator* generates Junit test cases for each Class Under
 The classes that have been tested with the given tool belong to standard Java library and SDK version 1.4.0.
 
 ###Results
-The outcome of the generated tests that use chromosomes repeats the theoritical assumption that the branch coverage conducted by the experiment equals to 100%.
+The outcome of the generated tests that use chromosomes repeat the theoretical assumption that the branch coverage conducted by the experiment equals to 100%.
 On the other hand, the effectiveness of automatically generated tests to detect faults is to some extent high but not completely satisfying. 
 
 ###Conclusions and Future Work
 The usage of genetic algorithm for the purpose of unit testing is considered as quite impressive.
 The generated test suites are completed in acceptable computation time.
 Future work will be dedicated to discover various criteria for evaluation of effectiveness of the algorith as it concerns data flow, fault exposing capability.
-Moreover, future work is recommended to include milti-class testing.
+Moreover, future work is recommended to include multi-class testing.
+
