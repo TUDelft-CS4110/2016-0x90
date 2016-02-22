@@ -15,7 +15,7 @@ Genetic algorithms are broadly applied in the testing of procedural programs.
 Unit testing of classes considers that each class being tested consists of constructor(s), method invocation within certain set of input parameters
 
 ### Evolutionary testing
-Evolutionary testing requires certain steps to be implemented in the algorithm including a definition of parameters, maximum execution time, targets and automatically generated tests.
+Evolutionary testing requires certain steps to be implemented in the algorithm, including a definition of parameters, maximum execution time, targets and automatically generated tests.
 The algorithms result in generating test cases that are properly defined for at least one target (e.g., branches). 
 
 ### Chromosomes
@@ -37,7 +37,7 @@ During a union of chromosomes at a randomly selected line, the confliction varia
 
 ### Input generators
 Input generators are defined in the declaration of method signatures. 
-Default input generator are use if only type names are declared.
+Default input generator are used if only type names are declared.
 The following types for generated rules are applied:
 - Integer and real numbers (only in the interval from 0 to 100)
 - Booleans (50% probability for true, and 50% for false)
@@ -51,10 +51,10 @@ It consists of the following components:
 Branch instrumentor generates instrumented code where each control flow branch is individually described and traced in the process of execution. 
 
 ### Chromosome former
-Produces new chromosomes and modifies existing chromosomes according to method signatures. 
+Produces new chromosomes and modifies existing chromosomes, according to method signatures. 
 
 ### Test case generator 
-Within the inner loop of the genetic algorithm every test case identified by a chromosome is implemented.
+Within the inner loop of the genetic algorithm every test case, identified by a chromosome is implemented.
 
 #### Test case executor
 After execution of test cases, a summary containing information of successfully passed test cases, as well as failed ones and not proper assertions, is being generated.
@@ -65,7 +65,7 @@ The unit testing have been applied to classes existing in the standard Java libr
 
 ###The procedure
 The Classes Under Test have been implemented using *Branch instrumentor*.
-After that *Test case generator* generates Junit test cases for each Class Under Test. 
+After that *Test case generator* generates JUnit test cases for each Class Under Test. 
 
 ###Classes Under Test
 The classes that have been tested with the given tool belong to standard Java library and SDK version 1.4.0.
@@ -77,6 +77,6 @@ On the other hand, the effectiveness of automatically generated tests to detect 
 ###Conclusions and Future Work
 The usage of genetic algorithm for the purpose of unit testing is considered as quite impressive.
 The generated test suites are completed in acceptable computation time.
-Future work will be dedicated to discover various criteria for evaluation of effectiveness of the algorith as it concerns data flow, fault exposing capability.
+Future work will be dedicated to discover various criteria for evaluation of effectiveness of the algorithm as it concerns data flow, fault exposing capability.
 Moreover, future work is recommended to include multi-class testing.
 
