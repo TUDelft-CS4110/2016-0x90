@@ -19,9 +19,9 @@ This technology was made available through the EvoSuite framework.
 ## Background Information
 To generate effective test cases, the guiding medium used most commonly is the code coverage criterion, which represents a finite set of coverage goals (e.g. branch coverage, path coverage, etc). 
 Many techniques (such as the one mentioned in the previous papers) are already being used by software engineers, but they all have certain drawbacks.  
-One example of such drawback is when applying the work mentioned in Paper 2, handling the growth/reduction of generated test cases requires quite a bit of effort. 
-Additionally, there is mention of a technique that also takes into account collateral coverage, which is represent the amount of collateral targets that are accidentally covered. 
-However, no particular heuristic exists to help covering these targets.  
+One example of such drawback is that when applying the work mentioned in Paper 2, handling the growth/reduction of generated test cases requires quite a bit of effort. 
+Additionally, there is mention of a technique that also takes into account collateral coverage, which represents the amount of collateral targets that are accidentally covered. 
+However, no particular heuristic exists to help cover these targets.  
 The approaches mentioned so far all target a single test goal at a time, which is the predominant method. 
 But there is one that uses a single sequence of function calls to maximize the number of covered branches while watching out for the length of such a test case. 
 A drawback of such approach is that there can be conflicting testing goals and it might be impossible to cover all of them with a single test sequence, regardless of its length.  
@@ -29,7 +29,7 @@ Another method proposed optimizes entire test suites with a search algorithm wit
 However, the strong limitation is having to manually choose and fix the length of the test cases, which does not evolve during the search.  
 To deal with these drawbacks, the paper therefore approaches a new method with the intent to satisfy the chosen coverage criterion with the smallest possible test suite, which makes use of a search algorithm applied on a population of test suites. 
 ## Test Suite Optimization
-To execute whole test suite generation, the paper describes the use of Genetic Algorithm (GA) as search algorithm, on a population of test suites. It also focuses on *branch coverage* as test criterion. 
+To execute whole test suite generation, the paper describes the use of a Genetic Algorithm (GA) as search algorithm, on a population of test suites. It also focuses on *branch coverage* as test criterion. 
 
 ### Genetic Algorithm
 This algorithm starts with a random population of test suites, and evolves this population until a solution is found that fulfills the coverage criterion, or the set resources such as time or number of fitness evaluations have been used up. 
@@ -98,8 +98,8 @@ To overcome this problem, EvoSuite always inserts an Integer object into contain
 However, container classes must be identified manually, but the EvoSuite team is working on it.  
 Additionally, there are security measures that need to be undertaken during test execution.
 There is a security manager that controls what permissions are granted. 
-This is useful when the program requires to open up a network connection, or accesses the filesystem for some purpose. 
-It is not desireable to have the test suite opening up a random network connection, or manipulating the file system in random ways. 
+This is useful when the program requires a network connection, or filesystem access for some purpose. 
+It is not desireable to have the test suite opening up a random network connection, or manipulating the filesystem in random ways. 
 
 ## Difficulties
 As previously mentioned, the EvoSuite tools has difficulties dealing with Java Generics, and security concerns affect the coverage goal the tool can fulfill.  
