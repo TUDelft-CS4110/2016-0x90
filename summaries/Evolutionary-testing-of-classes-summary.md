@@ -72,7 +72,7 @@ The classes that have been tested with the given tool belong to standard Java li
 
 ###Results
 The outcome of the generated tests that use chromosomes repeat the theoretical assumption that the branch coverage conducted by the experiment equals to 100%.
-On the other hand, the effectiveness of automatically generated tests to detect faults is to some extent high but not completely satisfying. 
+On the other hand, the effectiveness of automatically generated tests to detect faults is to some extent high but not ideal due to data flow of attributes or change of the state of the object. 
 
 ###Conclusions and Future Work
 The usage of genetic algorithm for the purpose of unit testing is considered as quite impressive.
