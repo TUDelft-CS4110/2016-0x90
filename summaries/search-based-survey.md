@@ -10,17 +10,20 @@
  - Verify non-functional properties.
 
 ## Metaheursitic Search Techniques
-Solution should be encoded such that they can be manipulated by the search and 'neighbours' can be compared. 
-Using an *objective function*, the search distinguishes *good* solutions from *bad* solutions and guides the search using this function.
+Solutions should be encoded such that they can be manipulated by the search and *neighbouring* solutions can be compared. 
+Using an *objective function*, *good* solutions are distinguished from *bad* solutions.
+The ojective function provides guidance to the search for solutions.
 
 ### Hill Climbing
 This is a local search algorithm that starts off at a random starting point and tries to look at neighbouring points in the search space to improve the solution.
-It is simple and fast, it however often reaches sub-optimal solutions when there are many local optimal.
+It is simple and fast. However, it often reaches sub-optimal solutions when there are many local optimal.
 This can be slightly avoided by starting at multiple random starting points.
 
 ### Simulated Annealing
 Simulated Annealing is similar to Hill Climbing, but probabilistically accepts poorer solutions.
-Starts off with lots of freedom in movement, but limits its movement as the search progresses.
+The technique does not always choose the optimal solution, but has a given probability that chooses worse solutions. 
+This allows us to find solutions that are "deeper" in the search path.
+It starts off with lots of freedom in movement (high probability to choose worse solutions), but limits its movement (low probability to choose worse solutions) as the search progresses.
 
 ### Evolutionary Algorithms
 #### Evolution Strategies
@@ -30,7 +33,7 @@ Evolution Strategies use mutation: a process of randomly modifying solutions.
 In Genetic Algorithms the search is driven by *recombination*, a mechanism of exchange of information between solutions to create new ones.
 Genetic Algorithms keep track of a population of solutions, not only one solution. 
 This allows for the sampling of a larger search space.
-The population is combined a mutated to evolve successive populations.
+The population is combined and mutated to evolve successive populations.
 Favour 'fitter' solutions to be combined and form even better solutions.
 Choosing 'fitter' solutions too heavily can have a negative effect and reduce diversity and can cause *premature convergence*.
 
@@ -40,10 +43,11 @@ Difficulties: maintaining a constant *selective pressure* (grade of selecting di
 
 **Linear Ranking:**
 Individuals are sorted by fitness and a selective bias of *Z* is applied to each of the individuals.
+For Z holds: 1 < Z ≤ 2. The linear ranking allocates a selective bias of Z to the top individual, a bias of 1.0 to the median individual, and 2 − Z to the bottom individual.
 This differs from fitness-proportionate selection in the sense that a constant bias is applied and thus the selective pressure is more constant and controlled.
 
 **Tournament Selection:** 
-Two individuals are chosen at random, a random number is chosen and compared to the probability of the better individual being selected.
+In Tournament Selection two individuals are chosen at random. A random number is then chosen and compared to the probability of the better individual being selected.
 Afterwards the winner is the parent of the other individual.
 Once all the parents have been selected, recombination forms the next generation.
 Optionally random crossover is applied, sending children into a new population.
@@ -75,7 +79,7 @@ Procedure calls can be inlined as a solution, however the number of paths can gr
 *Reachability constraints* withing the constraint system describe the conditions required for the reachability of statements.
 *Necessity constraints* describe the conditions that will kill a mutant.
 
-Using Symbolic Execution we can develop constraints in terms of input variables and perform *Domain Reduction*  to attempt a solution to the constraints. 
+By using Symbolic Execution we can develop constraints in terms of input variables and perform *Domain Reduction*  to attempt a solution to the constraints. 
 > Large search space ---constraints---> Reduction of search space
 
 #### Dynamic Domain Reduction
@@ -84,8 +88,8 @@ Dynamic Domain Reduction is a *static analysis technique* that starts with domai
 *This technique still suffers from difficulties with computed storage locations, loops and non-ordinal variable types(e.g. Enums).*
 
 ### Dynamic Structural Test Data Generation
-*Dynamic methods* use some input to execute a program and uses instrumentation to observer the results.
-Many of the issues regarding Symbolic Execution are resolved by directly resolving e.g. pointer values and array subscripts.
+*Dynamic methods* use input to execute a program and instrumentation to observe the results.
+Many of the issues present in Symbolic Execution are resolved by directly resolving e.g. pointer values and array subscripts.
 
 #### Random Testing
 Executes the program with random inputs and observes executed program structures.
@@ -93,16 +97,16 @@ When using this technique, code that has low probability of being executed is of
 
 ##### Applying Local Search
 In the Local Search technique, the tester selects a path through the program and produces a straight-line version of that path.
-Path constraints are constructed with constant for each constraint estimating the satisfiability of the constraint.
+Path constraints are constructed with a constant for each constraint estimating the satisfiability of the constraint.
 A function *f* is constructed out of all of these constraints.
 *f* provides an estimate of the satisfiability of all constraints.
 Using numerical maximisation techniques, the input values are maximized to satisfy as many constraints as possible.
-One major draw-back of this was that that run-time errors could occur, since the dependency between constraints were not taken into account, which could create sequences, which in practice are impossible to execute.
+One major drawback of this is that run-time errors can occur, since the dependency between constraints are not taken into account, which could create sequences that in practice are impossible to execute.
 
 Improvements to this technique emerged to resolve this problem.
 The search was now targeted with the satisfaction of each constraint instead of all the constraints. 
-If during the execution an undesired branch is take, a local search is started, that is targeted to minimize branch distance of the desired branch, also known as the *branch distance*.
-Creating these inputs is done using the *alternating variable* method, that starts with an *exploratory phase* in which probes neighbouring constraints by increase or decreasing only that specific variable.
+If during the execution an undesired branch is taken, a local search is started that is targeted to minimize branch distance of the desired branch, also known as the *branch distance*.
+Creating these inputs is done using the *alternating variable* method, that starts with an *exploratory phase* which probes neighbouring constraints by increasing or decreasing only that specific variable.
 If the move leads to an improved objective value, a *pattern phase* is entered.
 In this phase a larger move is made in the direction of the improvement, this is repeated until a minimum for that objective function is found for that variable.
 After this is complete, other variable are explored.
@@ -128,7 +132,7 @@ These branches do not affect the reachability of target node and are thus are al
 The Goal-Oriented Approach suffers from similar problems as the Local Search approach. The removal of the requirement to select a path introduces new ways in which the test data search can fail.
 Instead of performing local searches, this technique can also use global search with Genetic Algorithms, but even these have their problems.
 
-Main problem: data dependencies are not taken into account. An attempt to solve this solution is done in the Chaining Approach
+Main problem: data dependencies are not taken into account. An attempt to solve this solution is made in the Chaining Approach
 
 ##### The Chaining Approach
 Chaining uses an *event sequence* as a intermediate means of deciding the type of path required to reach the target node. 
@@ -147,14 +151,14 @@ A branch is *non-essential* if it is none of the above.
 When inputs cannot be found to change the flow of control such that a critical branch is avoided, the starting node is declared as being a problem node.
 The technique then searches for alternative event sequences.
 
-The Chaining Approach organises generate event sequences in a tree. 
+The Chaining Approach organises generated event sequences in a tree form. 
 In this tree, the root node represents the initial event sequence and subsequent nodes are the resulting event sequences of all the corresponding problem nodes.
-Backtracking techniques of depth *n* can be used in more complicated instances, to look for last definition statements of variables.
-The tree is explored using a depth-first strategy, with a specified depth limit.
+Backtracking techniques of depth *n* can be used in more complicated instances to look for last definition statements of variables.
+The tree is explored using a depth-first strategy with a specified depth limit.
 This technique covers a larger set of programs than the Goal-Oriented Approach, but as search times increase, local search can become trapped in difficult search spaces.
 
 #### Applying Simulated Annealing
-For the "neighbourliness" structure for integer and real variables is defined as the range of values around each individual value.
+The "neighbourliness" structure of the integer and real variables is defined as the range of values around each individual value.
 Boolean, enumerated types and all other order insignificant variables are considered as neighbours.
 The objective function is the branch distance of the required branch when control flow diverges from the intended path. 
 To reduce search becoming stuck in a local optima, the restriction that a solution must conform to an already existing sub-path is lifted.
@@ -203,8 +207,8 @@ Include branch coverage and LCSAJ (linear code sequence and jump) coverage.
 Aim to execute a certain sequence of nodes through the control flow graph, without the specification of a concrete path between each node.
 
 #### Control-Related Problems for Objective Functions
-A major problem is covering nested structures within loops, which require many iterations.
-Some approaches try to resolve this by saying that the branches that miss the target in iterations of the loop as if they were critical branches.
+A major problem is covering nested structures within loops that require many iterations.
+Some approaches try to resolve this by considering branches that miss the target in iterations of the loop, as critical branches.
 However, this leads to penalisation of individuals in the first iteration of the loop.
 
 A second problem is the assignment of approach levels for some classes of programs with unstructured control flows.
@@ -215,10 +219,10 @@ Both strategies have different effects on the progress of the search, but it sti
 
 #### Branch-Distance-Related Problems for Objective Functions
 The global search techniques still have some problems in hostile search landscapes containing large plateaux or several local optima.
-Plateaux are for example really easily created by a simple "flag" variable.
+Plateaux are easily created by a simple "flag" variable.
 With these types of flags, the evolutionary search performs no better than random search.
 
-A solution to this is by removing a flag from the branch predicate by performing program transformation.
+A solution is removing a flag from the branch predicate by performing program transformation.
 This is however not always possible.
 
 Alternatively a sequence of nodes to be executed prior to the branch predicate containing the flag can be identified.
@@ -229,7 +233,7 @@ A second problem is that there exists the possibility that the branch distance c
 A third problem can occur with nested branch predicates where a solution for subsequent conditions must be found without violating any of the earlier conditions.
 
 #### Applying Variable Dependency Analysis
-Variable dependence analysis allows you to determine the subset of input variables that cannot affect the outcome at a branch predicate.
+Variable dependency analysis allows the determination of the subset of input variables that cannot affect the outcome at a branch predicate.
 This allows for reduction of the search space.
 
 #### Generating Input Sequences
@@ -260,7 +264,7 @@ Functional (Black-Box) Testing uses metaheuristic search techniques to test the 
 ### Generating Test Data from a Z Specification
 Z specification describes the state space of the system in a schema consisting of disjunctions containing a conjunction of input variables and predicates.
 Each disjunct is considered as a *route* through the system. Genetic Algorithms are used to search for test data for each route.
-Each conjunct is evaluated using a distance based approach,  to the branch distance calculations used in Structural testing.
+Each conjunct is evaluated using a distance based approach, to the branch distance calculations used in Structural testing.
 The overall fitness of the route is the summation of the distances for each of its conjuncts.
 
 ### Testing Specification Conformance
@@ -326,9 +330,9 @@ Alternatively *dynamic approaches* execute the program with some input and exami
 Helps resolve problems we saw with symbolic execution such as pointer locations, which are known at run-time.
 
 Metaheursitic Techniques allow a definition of an objective function, which is used to guide test data generation.
-Two main types of objectives: *Coverage-Oriented* (objective function: number of program structures executed) and *Structure-Oriented* (objective function: guides search to cover each individual structural element)
+The two main types of objectives are *Coverage-Oriented* (objective function: number of program structures executed) and *Structure-Oriented* (objective function: guides search to cover each individual structural element).
 
-*Search-based test data generation approaches*  to *functional testing* have focussed on finding inputs such that the program does not meet the specifications. 
+*Search-based test data generation approaches*  to *functional testing* have focused on finding inputs such that the program does not meet the specifications. 
 
 *Grey-box* test data generation approaches combine methods used in generating structural and functional testing.
 Structure-oriented white-box testing techniques can be used to attempt to induce violations of assertions.
