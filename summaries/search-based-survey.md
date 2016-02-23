@@ -171,11 +171,11 @@ When using this technique, generally there is a lack of guidance provided for st
 Therefore, it is difficult to expect full coverage of these techniques for any non-trivial programs.
 
 ###### Structure-Oriented Approaches
-Structure-Oriented Approaches take a *divide and conquer* approach to obtaining full coverage. In this approach, a separate search is done for each uncovered element.
+Structure-Oriented Approaches take a *divide and conquer* approach to obtain full coverage. In this approach, a separate search is done for each uncovered element.
 
 **Branch-Distance-Oriented Approaches**: 
 Branch-Distance-Oriented Approaches use branch predicates in combination with Random Search or Genetic Algorithms for the more difficult cases.
-A path is chosen and the relevant branch predicates are extracted. A Genetic Algorithm is then used to find input data that satisfies all the branch predicates at once.
+A path is chosen and the relevant branch predicates are extracted. A Genetic Algorithm is then used to find input data that satisfies all branch predicates at once.
 Since this technique requires rigid constraints, the chance of getting stuck in local optima is high.
 It would be better if more feedback could be provided via the objective function.
 This is where control oriented approaches come into play.
@@ -192,7 +192,7 @@ The result looks quite a bit like the Control-Oriented approach, but by using br
 
 #### Objective Functions for Different Structural Coverage Criteria
 Structural criteria are divided into four categories, where the general objective function is defined as: `approach_level + m_branch_dist`.
-These two variables depends on the coverage type in question.
+These two variables depend on the coverage type in question.
 
 **Node-Oriented:**
 Aim to cover specific nodes of the control flow graph.
@@ -215,7 +215,7 @@ A second problem is the assignment of approach levels for some classes of progra
 A solution to this is to use *optimistic* or *pessimistic* approach level allocation strategies.
 In an optimistic strategy, a control dependent branching node is allocated its approach level on the basis of the shortest control dependent path from itself to the target node.
 In a pessimistic strategy, a branching node is allocated its approach level on the basis of the longest control dependent path to the target node.
-Both strategies have different effects on the progress of the search, but it still remains an open problem as to which strategy works the best in general.
+Both strategies have different effects on the progress of the search, but it still remains an open problem which strategy works the best in general.
 
 #### Branch-Distance-Related Problems for Objective Functions
 The global search techniques still have some problems in hostile search landscapes containing large plateaux or several local optima.
@@ -238,7 +238,7 @@ This allows for reduction of the search space.
 
 #### Generating Input Sequences
 Another problem for structural test data generation are test objects with internal states.
-In theses situations an input sequence is required to cover certain structures.
+In these situations an input sequence is required to cover certain structures.
 
 A further problems with state-based systems is their tendency to make use of flag and enumeration variables to control the current state.
 
@@ -262,13 +262,13 @@ Future fields of research: programs using information from files and sockets.
 Functional (Black-Box) Testing uses metaheuristic search techniques to test the logical behaviour of a system, as described by some form of specification.
 
 ### Generating Test Data from a Z Specification
-Z specification describes the state space of the system in a schema consisting of disjunctions containing a conjunction of input variables and predicates.
+Z specification describes the state space of the system in a schema consisting of disjunctions, which contain conjunction of input variables and predicates.
 Each disjunct is considered as a *route* through the system. Genetic Algorithms are used to search for test data for each route.
 Each conjunct is evaluated using a distance based approach, to the branch distance calculations used in Structural testing.
 The overall fitness of the route is the summation of the distances for each of its conjuncts.
 
 ### Testing Specification Conformance
-Conformance of the implementation to its specification is checked by executing the test object with the generated test data, and then validating the output against the specification.
+Conformance of the implementation to its specification is checked by executing the test object with the generated test data and then validating the output against the specification.
 A failure is found when an input situation is discovered that satisfies the pre-condition of a function, but for which the outputs violate the post-condition.
 
 ### Future Directions for Search-based Functional Testing
@@ -276,15 +276,15 @@ Search-based functional testing is less active compare to structural testing.
 A few downsides:
  - A mapping needs to be provided from the abstract model of the specification to the concrete form of the implementation.
  - Can consist of an extremely large search space.
- - Test sequences may need to be generated to put the system into some valid state in  order for the property of interest to be test.
+ - Test sequences may need to be generated to put the system into some valid state in order for the property of interest to be test.
 
 ## Grey-box Testing
 Grey-box testing combines both structural and functional information for the purpose of testing.
 
 ### Assertion Testing
 Assertions specify constraints that apply to some state of a computation. When an assertion evaluates to false, an error has been found in the program.
-The assertion code is formed into a function with the original assertion comment region replaced with a call to that function.
-The goal is then to execute a false assignment to the assertion variable statement within the function, and thereafter avoiding all true assignment to the variable.
+The assertion code is formed into a function with the original assertion comment region and replaced with a call to the corresponding function.
+The goal is then to execute a false assignment to the assertion variable statement within the function and thereafter avoiding all true assignment to the variable.
 
 ### Exception Condition Testing
 Similar idea as Assertion Testing, but this technique tries to trigger exceptions.
@@ -298,7 +298,7 @@ Problem here was that the Test Data was often not possible when using the softwa
 In this area there is a large concentration on best and worst-case execution times of real-time systems.
 
 ### Execution Time Testing
-Execution time testing involves attempting to find the worst-case execution time (WCET) or the best-case execution time (BCET) of a system in order to determine whether it is compliant with its timing constraints.
+Execution time testing involves attempts to find the worst-case execution time (WCET) or the best-case execution time (BCET) of a system in order to determine whether it is compliant with its timing constraints.
 
 #### Static analysis
 Static analysis can be used to derive WCET and BCET. This is done by examining the possible execution paths and modelling timing behaviour at the hardware level.
@@ -314,7 +314,7 @@ It is important to look into using a combination of static analysis and search-b
 Search-based techniques could be used to verify path feasibility for static analysis.
 
 Further it is possible to combine the objective function with those used by structural test data generation to ensure that timing behavior involving all branches is explored.
-Especially procedural code has been researched, it would be interesting extending these techniques to object-oriented software.
+Especially procedural code has been researched. It would be interesting extending these techniques to object-oriented software.
 
 
 ### Future Directions for Search-based Non-Functional Testing
@@ -327,7 +327,7 @@ Future research areas include:
 *Symbolic Exectuion* evaluates program code in order to build up a system of constraints describing the test goal.
 Becomes problematic when using loop and in cases where computer storage location need to be determined.
 Alternatively *dynamic approaches* execute the program with some input and examining the effects via some form of instrumentation.
-Helps resolve problems we saw with symbolic execution such as pointer locations, which are known at run-time.
+Helps to resolve problems we saw with symbolic execution such as pointer locations, which are known at run-time.
 
 Metaheursitic Techniques allow a definition of an objective function, which is used to guide test data generation.
 The two main types of objectives are *Coverage-Oriented* (objective function: number of program structures executed) and *Structure-Oriented* (objective function: guides search to cover each individual structural element).
