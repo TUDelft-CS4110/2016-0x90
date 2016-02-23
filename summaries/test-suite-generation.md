@@ -89,7 +89,7 @@ When a test suite T is mutated, each of its test cases has equal probability of 
 On average, only one test case mutates.
 
 ## EvoSuite
-The EvoSuite tool implements the approached presenting in this paper, for developing JUnit test suites for Java code. 
+The EvoSuite tool implements the approached presented in this paper, for developing JUnit test suites for Java code. 
 This tool works at the bytecode level and collects all information for the test cluster from the byte-code via Java Reflection.
 This means that EvoSuite could also be used for other programming languages that compile to Java byte-code (such as Scala or Groovy). 
 Furthermore, EvoSuite treats cases from a switch.case construct like an individual if-condition, making the number of branches at byte-code level large than at the source code level.  
