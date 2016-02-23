@@ -12,7 +12,7 @@ Genetic algorithms use chromosome encoding ensuring that test cases for hard-to-
 Genetic algorithms are broadly applied in the testing of procedural programs.
 
 ### Unit testing of classes
-Unit testing of classes considers that each class being tested consists of constructor(s), method invocation within certain set of input parameters
+Unit testing of classes considers that each class being tested consists of constructor(s), method invocation within a certain set of input parameters
 
 ### Evolutionary testing
 Evolutionary testing requires certain steps to be implemented in the algorithm, including a definition of parameters, maximum execution time, targets and automatically generated tests.
