@@ -7,6 +7,9 @@ Search based algorithms such as Genetic Algorithms (GA) are used for Test Data G
 These algorithms require an objective function to guide the search.
 Using this single objective function to guide the search is a limitation, since the there are multiple factors that should be considered to guide the generation task,such as: ability to reveal certain kind of faults, induced execution time and memory consumption.
 
+The paper presents a framework that uses *NSGA-II* (Non-dominated Sorting Genetic Algorithm).
+THe *NSGA-II* algorithms is an algorithm that evaluates the solutions according to Pareto dominance concepts and allows for the comparison of multiple objectives.
+
 ## Test Data Generation by a Mult-objective Approach
 
 ## Evaluation Studies
