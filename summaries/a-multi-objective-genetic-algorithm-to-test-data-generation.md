@@ -50,8 +50,15 @@ Consists of the following steps:
 7. Individuals are analyzed and non-dominated solutions are added to the set of non-dominated solutions during 4.
 
 ## Evaluation Studies
-
-## Related Work
+The described approach was evaluated in three case studies.
+The solutions found by NSGA-II dominate all the solutions found by a random strategy (RS). 
+It was observed that the NSGA-II cost is almost three times greater than the RS cost and thus suggests that the strategies can be used in a complementary way.
+Furthermore, it was observed that the coverage of the criterion and ability to reveal faults seems to be dependent. Future work should look more into this.
+A combination that makes use of a multi-objective approach more suitable is one that includes execution time since, improving coverage implies to reveal more faults.
 
 ## Conclusions
+The paper presented a framework to perform multi-objective test data generation with two strategies: procedural and object oriented.
+The results of three case studies show that the multi-objective algorithm gets better solutions and improvements for all the objectives.
+The solutions of the NSGA-II algorithm always dominated the random strategy.
+Future work can be done in the evaluation of other objectives, as well as, other meta-heuristic algorithms.
 
