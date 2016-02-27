@@ -129,7 +129,3 @@ Whole test suite generation achieves **higher coverage** and produces smaller **
 It is also proven in this paper that the technique will always converge and therefore find a solution for the optimal test suite, meaning that there will never be a case where the algorithm runs forever by being stuck in the search space.  
 Overall, this technique offers a great way for testing an entire code base, where testing oracles can be added in terms of assertions. 
 However, the oracle problem is still a difficult obstacle, because even when keeping the tests small, what guarantees the correctness of these tests and the difficulty to comprehend them?
-
-#### Next Paper
-Will be chosen soon.
-
