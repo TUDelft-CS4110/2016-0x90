@@ -49,8 +49,8 @@ To automatically generate test cases, there are two things we needs to do:
 - Apply a genetic algorithm to evolve the randomly generated test case population according to a fitness function.
 
 There are different approaches to which this method can be applied: single test generation (target one goal at a time), or whole test suite generation.  
-After executing our own literature survey of six papers treating the matter, we have received a clear overview of what search algorithms  [[1](#1)] exist to find a suitable test case population. 
-We have obtained a deeper understanding of the genetic algorithm applied  [[2](#2)][[3](#3)], and we have learnt the mechanisms behind whole test suite generation [[4](#4)]. 
+After executing our own literature survey of six papers treating the matter, we have created a clear overview of what search algorithms [[1](#1)] exist to find a suitable test case population. 
+We have obtained a deeper understanding of the genetic algorithm applied [[2](#2)][[3](#3)], and we have learnt the mechanisms behind whole test suite generation [[4](#4)]. 
 We have also studied the effectiveness of whole test suite generation [[5](#5)], and how to optimize the branch coverage criterion [[6](#6)], which is one criterion for a coverage goal.  
 We describe the findings in the aforementioned order. 
 
@@ -67,7 +67,7 @@ We describe the findings in the aforementioned order.
 ### Metaheursitic Search Techniques
 Solutions should be encoded such that they can be manipulated by the search and *neighbouring* solutions can be compared. 
 Using an *objective function*, *good* solutions are distinguished from *bad* solutions.
-The ojective function provides guidance to the search for solutions.
+The objective function provides guidance to the search for solutions.
 
 #### Hill Climbing
 This is a local search algorithm that starts off at a random starting point and tries to look at neighbouring points in the search space to improve the solution.
@@ -281,7 +281,7 @@ A solution is removing a flag from the branch predicate by performing program tr
 This is however not always possible.
 
 Alternatively a sequence of nodes to be executed prior to the branch predicate containing the flag can be identified.
-However, the approach has problems avoiding unrequired assignments to flags within loop bodies.
+However, the approach has problems avoiding optional assignments to flags within loop bodies.
 
 A second problem is that there exists the possibility that the branch distance calculation deceives the search.
 
@@ -362,7 +362,7 @@ Major problems with this technique are the possibility of simulation errors and 
 
 ##### Search-based Execution Time Testing
 The objective function is the execution time of the system as executed with some input. The search attempts to maximize (WCET) or minimize (BCET).
-Search-based techniques cannot guarantee the actual WCET or BCEt, but the best found result can be used to form an interval with the time obtained from static analysis within which the actual extreme execution time most probably lies.
+Search-based techniques cannot guarantee the actual WCET or BCET, but the best found result can be used to form an interval with the time obtained from static analysis within which the actual extreme execution time most probably lies.
 
 ##### Future Directions for Search-based Execution Time Testing
 It is important to look into using a combination of static analysis and search-based techniques.
@@ -638,7 +638,7 @@ However, container classes must be identified manually, but the EvoSuite team is
 Additionally, there are security measures that need to be undertaken during test execution.
 There is a security manager that controls what permissions are granted. 
 This is useful when the program requires a network connection or filesystem access for some purpose. 
-It is not desireable to have the test suite opening up a random network connection or manipulating the filesystem in random ways. 
+It is not desirable to have the test suite opening up a random network connection or manipulating the filesystem in random ways. 
 
 ### Difficulties
 As previously mentioned, the EvoSuite tools has difficulties dealing with Java Generics, and security concerns affect the coverage goal the tool can fulfill.  
@@ -674,8 +674,8 @@ There are a couple of issues with such an approach:
 - *Search budget distribution:* Wasting time on infeasible coverage. Determining whether a goal is feasible or not is an undecidable problem.
 - *Coverage goal ordering:* Search for each coverage goal is independent, and potentially useful information is not shared between individual searches. 
 
-The whole test suite generation technique aimed at resolving these issues by targetting multiple coverage goals at the same time. 
-The advantage of this new approach is that both the questions of how to distrubute the search budget between individual coverage goals at the same time and in which order to target these goals disappear. 
+The whole test suite generation technique aimed at resolving these issues by targeting multiple coverage goals at the same time. 
+The advantage of this new approach is that both the questions of how to distribute the search budget between individual coverage goals at the same time and in which order to target these goals disappear. 
 Large improvements have been reported for both branch coverage and mutation testing when using this method. 
 However, despite the evidence of higher overall coverage, it is unsure as to how this whole test suite generation technique influences individual coverage goals. 
 Is the higher coverage due to more *easy* goals being covered? 
@@ -709,9 +709,9 @@ This means that there is no evidence of a factor that strongly influences the re
 
 ### Conclusion
 Existing research has shown that the whole test suite approach lead to better coverage results than the traditional one target at a time approach. 
-There was reasonable doubt on whether this would be the case when targetting difficult goals. 
+There was reasonable doubt on whether this would be the case when targeting difficult goals. 
 This paper performed an in-depth analysis to study if this doubt could be confirmed in practice. 
-It was found that indeed, the *Whole* approach had more difficulties when targetting difficult goals. 
+It was found that indeed, the *Whole* approach had more difficulties when targeting difficult goals. 
 However, these cases are very few compared to the cases for which *Whole* performed significantly better. 
 This paper therefore provides more support to the validity and usefulness of the whole test suite generation method in the context of software testing.
 
