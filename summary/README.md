@@ -722,7 +722,7 @@ This paper therefore provides more support to the validity and usefulness of the
 Represents a search problem that aims at testing as many program element as possible (to maximize the number of branches).
 Whole test suite approach that was previously described as preferable to the single-branch at a time method.
 A new branch coverage will be proposed as many-objective optimisation problem alternatively to whole test suite approach that aggregates multiple objectives into a single value.
-A highly scalable many-objective genetic algorithm, called MOSA(Many-Objective Sorting Algorithm) is proposed to many-objective branch coverage problem.
+A highly scalable many-objective genetic algorithm, called Many-Objective Sorting Algorithm (MOSA) is proposed to many-objective branch coverage problem.
 
 ### Many-objective Optimisation Problem
 The problem itself includes discovering a set of test cases in order number of covered branches to be maximised. 
