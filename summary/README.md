@@ -1,9 +1,9 @@
 # Automated Test Case Generation
 
 
-`- [Automated Test Case Generation](#automated-test-case-generation)
+- [Automated Test Case Generation](#automated-test-case-generation)
  - [Introduction](#introduction)
- - [Search-Based Software Test Data Generation [[1](#1)]](#search-based-software-test-data-generation-11)
+ - [Search-Based Software Test Data Generation](#search-based-software-test-data-generation)
    - [Metaheursitic Search Applications](#metaheursitic-search-applications)
    - [Metaheursitic Search Techniques](#metaheursitic-search-techniques)
    - [Structural (White-Box) Testing](#structural-white-box-testing)
@@ -11,28 +11,28 @@
    - [Grey-box Testing](#grey-box-testing)
    - [Non-Functional Testing](#non-functional-testing)
    - [Conclusions](#conclusions)
- - [A Multi-Objective Genetic Algorithm to Test Data Generation [[2](#2)]](#a-multi-objective-genetic-algorithm-to-test-data-generation-22)
+ - [A Multi-Objective Genetic Algorithm to Test Data Generation](#a-multi-objective-genetic-algorithm-to-test-data-generation)
    - [Introduction](#introduction-1)
    - [Test Data Generation by a Multi-objective Approach](#test-data-generation-by-a-multi-objective-approach)
    - [Evaluation Studies](#evaluation-studies)
    - [Conclusions](#conclusions-1)
- - [Evolutionary Testing of Classes [[3](#3)]](#evolutionary-testing-of-classes-33)
+ - [Evolutionary Testing of Classes](#evolutionary-testing-of-classes)
    - [Automated Test Case Generation](#automated-test-case-generation-1)
    - [Genetic Algorithms for the Unit Testing of Classes](#genetic-algorithms-for-the-unit-testing-of-classes)
    - [The Tool eToc](#the-tool-etoc)
    - [Experimental Results](#experimental-results)
- - [Whole Test Suite Generation [[4](#4)]](#whole-test-suite-generation-44)
+ - [Whole Test Suite Generation](#whole-test-suite-generation)
    - [Research Goal](#research-goal)
    - [Background Information](#background-information)
    - [Test Suite Optimization](#test-suite-optimization)
    - [EvoSuite](#evosuite)
    - [Difficulties](#difficulties)
    - [Conclusion](#conclusion)
- - [Effectiveness of Whole Test Suite Generation [[5](#5)]](#effectiveness-of-whole-test-suite-generation-55)
+ - [Effectiveness of Whole Test Suite Generation](#effectiveness-of-whole-test-suite-generation)
    - [Research Goal](#research-goal-1)
    - [Empirical Study](#empirical-study)
    - [Conclusion](#conclusion-1)
- - [Reformulating Branch Coverage As A Many-Objective Optimization Problem [[6](#6)]](#reformulating-branch-coverage-as-a-many-objective-optimization-problem-66)
+ - [Reformulating Branch Coverage As A Many-Objective Optimization Problem](#reformulating-branch-coverage-as-a-many-objective-optimization-problem)
    - [Test Data Generation](#test-data-generation)
    - [Many-objective Optimisation Problem](#many-objective-optimisation-problem)
    - [Problem Formulation](#problem-formulation)
@@ -40,7 +40,7 @@
    - [Empirical Evaluation](#empirical-evaluation)
    - [Related Work](#related-work)
    - [Conclusions and Future Work](#conclusions-and-future-work-1)
- - [References](#references)`
+ - [References](#references)
  
  
 ## Introduction
@@ -55,7 +55,7 @@ We have also studied the effectiveness of whole test suite generation [[5](#5)],
 We describe the findings in the aforementioned order. 
 
 
-## Search-Based Software Test Data Generation [[1](#1)]
+## Search-Based Software Test Data Generation
 
 ### Metaheursitic Search Applications
 **Goals:**
@@ -392,7 +392,7 @@ The two main types of objectives are *Coverage-Oriented* (objective function: nu
 Structure-oriented white-box testing techniques can be used to attempt to induce violations of assertions.
 
 
-## A Multi-Objective Genetic Algorithm to Test Data Generation [[2](#2)]
+## A Multi-Objective Genetic Algorithm to Test Data Generation
 
 ### Introduction
 Search based algorithms such as Genetic Algorithms (GA) are used for Test Data Generation.
@@ -454,7 +454,7 @@ The solutions of the NSGA-II algorithm always dominated the random strategy.
 Future work can be done in the evaluation of other objectives, as well as other meta-heuristic algorithms.
 
 
-## Evolutionary Testing of Classes [[3](#3)]
+## Evolutionary Testing of Classes
 
 ### Automated Test Case Generation
 Automated Test Case Generation consists of creating an object, changing the state of that object and proper method calls with matching corresponding values. 
@@ -534,7 +534,7 @@ Future work will be dedicated to discover various criteria for evaluation of eff
 Moreover, future work is recommended to include multi-class testing.
 
 
-## Whole Test Suite Generation [[4](#4)]
+## Whole Test Suite Generation
 
 ### Research Goal
 Software testing is an essential component of software development. 
@@ -666,7 +666,7 @@ Overall, this technique offers a great way for testing an entire code base, wher
 However, the oracle problem is still a difficult obstacle, because even when keeping the tests small, what guarantees the correctness of these tests and the difficulty to comprehend them?
 
 
-## Effectiveness of Whole Test Suite Generation [[5](#5)]
+## Effectiveness of Whole Test Suite Generation
 
 ### Research Goal
 Before the whole test suite generation technique, the traditional method was to carry out a search on each individual coverage goal (e.g. a branch, a statement, etc). 
@@ -716,7 +716,7 @@ However, these cases are very few compared to the cases for which *Whole* perfor
 This paper therefore provides more support to the validity and usefulness of the whole test suite generation method in the context of software testing.
 
 
-## Reformulating Branch Coverage As A Many-Objective Optimization Problem [[6](#6)]
+## Reformulating Branch Coverage As A Many-Objective Optimization Problem
 
 ### Test Data Generation
 Represents a search problem that aims at testing as many program element as possible (to maximize the number of branches).
