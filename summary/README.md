@@ -7,11 +7,11 @@ To automatically generate test cases, there are two things we needs to do:
 - Apply a genetic algorithm to evolve the randomly generated test case population according to a fitness function.
 
 There are different approaches to which this method can be applied: single test generation (target one goal at a time), or whole test suite generation.  
-After executing our own literature survey of six papers treating the matter, we have received a clear overview of what search algorithms exist to find a suitable test case population. We have obtained a deeper understanding of the genetic algorithm applied, and we have learnt the mechanisms behind whole test suite generation. We have also studied the effectiveness of whole test suite generation, and how to optimize the branch coverage criterion.  
+After executing our own literature survey of six papers treating the matter, we have received a clear overview of what search algorithms  [[1](#1)] exist to find a suitable test case population. We have obtained a deeper understanding of the genetic algorithm applied  [[2](#2)][[3](#3)], and we have learnt the mechanisms behind whole test suite generation [[4](#4)]. We have also studied the effectiveness of whole test suite generation [[5](#5)], and how to optimize the branch coverage criterion [[6](#6)], which is one criterion for a coverage goal.  
 We describe the findings in the aforementioned order. 
 
 
-## Search-Based Software Test Data Generation
+## Search-Based Software Test Data Generation [[1](#1)]
 
 ### Metaheursitic Search Applications
 **Goals:**
@@ -175,13 +175,13 @@ The objective function is the branch distance of the required branch when contro
 To reduce search becoming stuck in a local optima, the restriction that a solution must conform to an already existing sub-path is lifted.
 
 ##### Applying Evolutionary Algorithms
-####### Coverage-Oriented Approaches
+###### Coverage-Oriented Approaches
 Coverage-Oriented Approaches work by rewarding on the basis of covered program structures.
 Search tends to reward long paths through the test subject.
 When using this technique, generally there is a lack of guidance provided for structures, which are only executed with values from a small portion of the overall input domain.
 Therefore, it is difficult to expect full coverage of these techniques for any non-trivial programs.
 
-####### Structure-Oriented Approaches
+###### Structure-Oriented Approaches
 Structure-Oriented Approaches take a *divide and conquer* approach to obtain full coverage. In this approach, a separate search is done for each uncovered element.
 
 **Branch-Distance-Oriented Approaches**: 
@@ -348,7 +348,7 @@ The two main types of objectives are *Coverage-Oriented* (objective function: nu
 Structure-oriented white-box testing techniques can be used to attempt to induce violations of assertions.
 
 
-## A Multi-Objective Genetic Algorithm to Test Data Generation
+## A Multi-Objective Genetic Algorithm to Test Data Generation [[2](#2)]
 
 ### Introduction
 Search based algorithms such as Genetic Algorithms (GA) are used for Test Data Generation.
@@ -410,7 +410,7 @@ The solutions of the NSGA-II algorithm always dominated the random strategy.
 Future work can be done in the evaluation of other objectives, as well as other meta-heuristic algorithms.
 
 
-## Evolutionary Testing of Classes
+## Evolutionary Testing of Classes [[3](#3)]
 
 ### Automated Test Case Generation
 Automated Test Case Generation consists of creating an object, changing the state of that object and proper method calls with matching corresponding values. 
@@ -490,7 +490,7 @@ Future work will be dedicated to discover various criteria for evaluation of eff
 Moreover, future work is recommended to include multi-class testing.
 
 
-## Whole Test Suite Generation
+## Whole Test Suite Generation [[4](#4)]
 
 ### Research Goal
 Software testing is an essential component of software development. 
@@ -622,7 +622,7 @@ Overall, this technique offers a great way for testing an entire code base, wher
 However, the oracle problem is still a difficult obstacle, because even when keeping the tests small, what guarantees the correctness of these tests and the difficulty to comprehend them?
 
 
-## Effectiveness of Whole Test Suite Generation
+## Effectiveness of Whole Test Suite Generation [[5](#5)]
 
 ### Research Goal
 Before the whole test suite generation technique, the traditional method was to carry out a search on each individual coverage goal (e.g. a branch, a statement, etc). There are a couple of issues with such an approach:
@@ -652,7 +652,7 @@ The researchers quantified the odds that *Whole* performs better to cover a cert
 Existing research has shown that the whole test suite approach lead to better coverage results than the traditional one target at a time approach. There was reasonable doubt on whether this would be the case when targetting difficult goals. This paper performed an in-depth analysis to study if this doubt could be confirmed in practice. It was found that indeed, the *Whole* approach had more difficulties when targetting difficult goals. However, these cases are very few compared to the cases for which *Whole* performed significantly better. This paper therefore provides more support to the validity and usefulness of the whole test suite generation method in the context of software testing.
 
 
-## Reformulating Branch Coverage As A Many-Objective Optimization Problem
+## Reformulating Branch Coverage As A Many-Objective Optimization Problem [[6](#6)]
 
 ### Test Data Generation
 Represents a search problem that aims at testing as many program element as possible (to maximize the number of branches).
@@ -750,9 +750,9 @@ In addition, a combination with other non-coverage criteria (execution time, mem
 
 
 ## References
-- *Phil McMinn*. Search-Based Software Test Data Generation: A Survey. Software Testing, Verification and Reliability, vol. 14, no. 2, pp. 105–156, 2004.
-- *Gustavo  H.L. Pinto, Silvia R. VErgilio*. A Multi-Objective Genetic Algorithm to Test Data Generation. 22nd IEEE International Conference on Tools with Artificial Intelligence (ICTAI),  vol. 1, pp. 129–134, 2010.
-- *Paolo Tonella*. Evolutionary testing of classes. In Proceedings of the 2004 ACM SIGSOFT international symposium on Software testing and analysis (ISSTA '04). ACM, New York, NY, USA, 119-128.
-- *Gordon Fraser and Andrea Arcuri*. Whole Test Suite Generation. IEEE Transactions on Software Engineering, vol. 39, iss. 2, pp. 276-291, 2013.
-- *Gordon Fraser and Andrea Arcuri*. On the Effectiveness of Whole Test Suite Generation. Search-Based Software Engineering, vol. 8636, pp. 1-15, 2014.
-- *Annibale Panichella, Fitsum Meshesha Kifetew, and Paolo Tonella*. Reformulating branch coverage as a many-objective optimization problem. Software Testing, Verification and Validation (ICST), 2015 IEEE 8th International Conference on. IEEE, 2015.
+1. <div id="1"/>*Phil McMinn*. Search-Based Software Test Data Generation: A Survey. Software Testing, Verification and Reliability, vol. 14, no. 2, pp. 105–156, 2004.
+2. <div id="2"/>*Gustavo  H.L. Pinto, Silvia R. VErgilio*. A Multi-Objective Genetic Algorithm to Test Data Generation. 22nd IEEE International Conference on Tools with Artificial Intelligence (ICTAI),  vol. 1, pp. 129–134, 2010.
+3. <div id="3"/>*Paolo Tonella*. Evolutionary testing of classes. In Proceedings of the 2004 ACM SIGSOFT international symposium on Software testing and analysis (ISSTA '04). ACM, New York, NY, USA, 119-128.
+4. <div id="4"/>*Gordon Fraser and Andrea Arcuri*. Whole Test Suite Generation. IEEE Transactions on Software Engineering, vol. 39, iss. 2, pp. 276-291, 2013.
+5. <div id="5"/>*Gordon Fraser and Andrea Arcuri*. On the Effectiveness of Whole Test Suite Generation. Search-Based Software Engineering, vol. 8636, pp. 1-15, 2014.
+6. <div id="6"/>*Annibale Panichella, Fitsum Meshesha Kifetew, and Paolo Tonella*. Reformulating branch coverage as a many-objective optimization problem. Software Testing, Verification and Validation (ICST), 2015 IEEE 8th International Conference on. IEEE, 2015.
