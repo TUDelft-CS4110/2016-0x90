@@ -1,6 +1,48 @@
 # Automated Test Case Generation
 
 
+`- [Automated Test Case Generation](#automated-test-case-generation)
+ - [Introduction](#introduction)
+ - [Search-Based Software Test Data Generation [[1](#1)]](#search-based-software-test-data-generation-11)
+   - [Metaheursitic Search Applications](#metaheursitic-search-applications)
+   - [Metaheursitic Search Techniques](#metaheursitic-search-techniques)
+   - [Structural (White-Box) Testing](#structural-white-box-testing)
+   - [Functional (Black-Box) Testing](#functional-black-box-testing)
+   - [Grey-box Testing](#grey-box-testing)
+   - [Non-Functional Testing](#non-functional-testing)
+   - [Conclusions](#conclusions)
+ - [A Multi-Objective Genetic Algorithm to Test Data Generation [[2](#2)]](#a-multi-objective-genetic-algorithm-to-test-data-generation-22)
+   - [Introduction](#introduction-1)
+   - [Test Data Generation by a Multi-objective Approach](#test-data-generation-by-a-multi-objective-approach)
+   - [Evaluation Studies](#evaluation-studies)
+   - [Conclusions](#conclusions-1)
+ - [Evolutionary Testing of Classes [[3](#3)]](#evolutionary-testing-of-classes-33)
+   - [Automated Test Case Generation](#automated-test-case-generation-1)
+   - [Genetic Algorithms for the Unit Testing of Classes](#genetic-algorithms-for-the-unit-testing-of-classes)
+   - [The Tool eToc](#the-tool-etoc)
+   - [Experimental Results](#experimental-results)
+ - [Whole Test Suite Generation [[4](#4)]](#whole-test-suite-generation-44)
+   - [Research Goal](#research-goal)
+   - [Background Information](#background-information)
+   - [Test Suite Optimization](#test-suite-optimization)
+   - [EvoSuite](#evosuite)
+   - [Difficulties](#difficulties)
+   - [Conclusion](#conclusion)
+ - [Effectiveness of Whole Test Suite Generation [[5](#5)]](#effectiveness-of-whole-test-suite-generation-55)
+   - [Research Goal](#research-goal-1)
+   - [Empirical Study](#empirical-study)
+   - [Conclusion](#conclusion-1)
+ - [Reformulating Branch Coverage As A Many-Objective Optimization Problem [[6](#6)]](#reformulating-branch-coverage-as-a-many-objective-optimization-problem-66)
+   - [Test Data Generation](#test-data-generation)
+   - [Many-objective Optimisation Problem](#many-objective-optimisation-problem)
+   - [Problem Formulation](#problem-formulation)
+   - [Algorithm](#algorithm)
+   - [Empirical Evaluation](#empirical-evaluation)
+   - [Related Work](#related-work)
+   - [Conclusions and Future Work](#conclusions-and-future-work-1)
+ - [References](#references)`
+ 
+ 
 ## Introduction
 To automatically generate test cases, there are two things we needs to do: 
 - Search through the problem space to generate a random population of test cases.
