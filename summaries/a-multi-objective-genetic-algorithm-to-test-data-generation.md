@@ -23,7 +23,7 @@ The representation of the population and the choice of the fitness function are 
 In this work, the individual represents a set of test data to be evolved.
 Two possible representations can be used to represent the data in each individual:
 
- - *Procedural:* the input consists in a sequence of value to execute the program.
+ - *Procedural:* the input consists of a sequence of value to execute the program.
  - *Object Oriented:* the input consists of sequences of invocations to constructors and methods, including the correspondent parameters.
 
 ### Genetic operators
