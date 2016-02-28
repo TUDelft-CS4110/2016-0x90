@@ -750,9 +750,9 @@ In addition, a combination with other non-coverage criteria (execution time, mem
 
 
 ## References
-- *Phil McMinn.* Search-Based Software Test Data Generation: A Survey. Software Testing, Verification and Reliability, vol. 14, no. 2, pp. 105–156, 2004.
+- *Phil McMinn*. Search-Based Software Test Data Generation: A Survey. Software Testing, Verification and Reliability, vol. 14, no. 2, pp. 105–156, 2004.
 - *Gustavo  H.L. Pinto, Silvia R. VErgilio*. A Multi-Objective Genetic Algorithm to Test Data Generation. 22nd IEEE International Conference on Tools with Artificial Intelligence (ICTAI),  vol. 1, pp. 129–134, 2010.
-- *Tonella, Paolo*. Evolutionary testing of classes. In Proceedings of the 2004 ACM SIGSOFT international symposium on Software testing and analysis (ISSTA '04). ACM, New York, NY, USA, 119-128.
-- *G. Fraser and A. Arcuri.* Whole Test Suite Generation. IEEE Transactions on Software Engineering, vol. 39, iss. 2, pp. 276-291, 2013.
-- *G. Fraser and A. Arcuri.* On the Effectiveness of Whole Test Suite Generation. Search-Based Software Engineering, vol. 8636, pp. 1-15, 2014.
-- *. Panichella, Annibale, Fitsum Meshesha Kifetew, and Paolo Tonella .*Reformulating branch coverage as a many-objective optimization problem. Software Testing, Verification and Validation (ICST), 2015 IEEE 8th International Conference on. IEEE, 2015.
+- *Paolo Tonella*. Evolutionary testing of classes. In Proceedings of the 2004 ACM SIGSOFT international symposium on Software testing and analysis (ISSTA '04). ACM, New York, NY, USA, 119-128.
+- *Gordon Fraser and Andrea Arcuri*. Whole Test Suite Generation. IEEE Transactions on Software Engineering, vol. 39, iss. 2, pp. 276-291, 2013.
+- *Gordon Fraser and Andrea Arcuri*. On the Effectiveness of Whole Test Suite Generation. Search-Based Software Engineering, vol. 8636, pp. 1-15, 2014.
+- *Annibale Panichella, Fitsum Meshesha Kifetew, and Paolo Tonella*. Reformulating branch coverage as a many-objective optimization problem. Software Testing, Verification and Validation (ICST), 2015 IEEE 8th International Conference on. IEEE, 2015.
