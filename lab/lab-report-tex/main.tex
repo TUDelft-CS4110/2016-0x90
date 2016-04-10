@@ -1,0 +1,113 @@
+\documentclass[a4paper]{article}
+
+\usepackage{fullpage}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{url}
+\usepackage[labelfont=bf]{caption}
+\usepackage[labelsep=period]{caption}
+\usepackage[toc,page]{appendix}
+
+\usepackage{listings}
+\usepackage{color}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.48,0.37,0.64}
+\definecolor{codedarkpurple}{rgb}{0.66,0.11,0.37}
+\definecolor{backcolour}{rgb}{0.99,0.99,0.99}
+
+\usepackage{mathtools}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{codedarkpurple},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+\title{% 
+On the Difficulties Behind Automated Test Case Generation 
+}
+
+\author{%
+\small Valentine Mairet \\
+\texttt{4141784}
+\and
+\small Martin Rogalla \\
+\texttt{4173635}
+\and
+\small Aleksandra Taneva \\
+\texttt{4510488}
+}
+
+\begin{document}
+\maketitle
+
+\vfill 
+
+\begin{abstract}
+\noindent
+Automated test case generation was introduced to make the life of software testers easier. 
+However, some problems regarding the generation of test cases still remain. 
+In this report, the EvoSuite tool for automated Java JUnit test case generation is run on 12 different Java classes to investigate the difficulties behind this automated process. 
+Each class is chosen for its size, complexity, and how difficult it seems to test at first glance.
+Additionally, this report provides an appendix with a short piece on the usability of EvoSuite and snippets of classes EvoSuite was run on. 
+By correlating cyclomatic complexity with branch coverage, and with test readability, the hope is to find a reason behind the difficulty to test a specific branch, and to generate readable tests to help the developer generate oracles easier. 
+The correlation coefficients found were insignificant, with 0.1753 and 0.3044 for cyclomatic complexity with branch coverage and with test readability respectively. 
+Therefore, cyclomatic complexity does not have an influence on neither code coverage nor generated test readability.
+However, it seems that the cause for low coverage lies deeper.
+When tests require specific input that needs conscious intervention, EvoSuite does not seem to be able to generate such test. 
+The tool cannot reason about the source code as a human would.
+EvoSuite also fails at boundary testing. 
+Moreover, when dealing with specific Java Generics input, EvoSuite cannot properly generate tests either. 
+The results show that EvoSuite is highly optimized for branch coverage, but when it fails at doing so, the reason mostly lies within the reasoning needed to deal with the source code. 
+\end{abstract}
+\newpage
+
+\tableofcontents
+\newpage
+
+\setlength{\parindent}{0cm}
+
+\input{0_intro.tex}
+
+\input{1_pre_work.tex}
+
+\input{2_methods.tex}
+
+\input{3_results.tex}
+
+\input{4_conclusion.tex}
+
+\newpage
+
+\bibliographystyle{plain}
+\bibliography{ref.bib}
+
+\newpage
+
+\appendix
+\input{5_appendix.tex}
+
+\end{document}
