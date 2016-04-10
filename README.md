@@ -21,4 +21,4 @@ This is the private repository for Team 0x90.
 [Automated Test Case Generation](summary/README.md)
 
 ## Lab
-[Report](lab/README.md)
+[Report](lab/lab-report.pdf)
