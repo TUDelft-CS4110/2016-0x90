@@ -1,0 +1,35 @@
+\section{Previous Work} \label{work}
+
+Previous work on and with EvoSuite has been done to prove automated test case generation could result in test suites with high code coverage and little test cases \cite{FRASER2013}.
+The same team who presented EvoSuite additionally inquired upon the effectiveness of EvoSuite and the \textit{whole-test-suite} approach \cite{FRASER2014}. 
+
+\subsection{Making of EvoSuite}
+
+Making EvoSuite with the \textit{whole-test-suite} approach aimed at high code coverage and the generation of smaller test suites to make the specification of assertions as easy as possible \cite{FRASER2013}.
+
+EvoSuite achieves this by selecting branch coverage as a coverage criterion and executing a genetic algorithm that selects a random population of test suites and evolves this population.
+It stops the evolution process when a solution is found which fulfills the coverage criterion or when the set of resources (such as time or number of fitness evaluations) have been used up \cite{FRASER2013}. 
+
+A solution is defined as a \textit{test suite}, which is represented as a set of test cases. 
+A test case is represented by a sequence of statements. 
+The fitness function estimates how close a solution is to covering \textit{all} branches by taking into account \textit{branch distance} for each branch, and the number of branches left to cover. 
+It also takes into account the size of the solution, to make sure the generated test suite does not grow to large. 
+
+It was shown that this approach fulfilled large coverage goals and succeeded at generating small enough test suites for easy oracle generation \cite{FRASER2013}. 
+But what about the performance of the \textit{whole-test-suite} approach compared to \textit{single-target}?
+
+\subsection{Whole Test Suite vs Single Target}
+
+By comparing the coverage achieved by the \textit{whole-test-suite} and \textit{single-target} approach, it was establish that, in general, the \textit{whole} approach performs better \cite{FRASER2014,FRASER2015}.
+
+Existing research has shown that the \textit{whole-test-suite} approach lead to better coverage results than the traditional \textit{single-target} approach. 
+There was reasonable doubt on whether this would be the case when targeting difficult goals. 
+An in-depth analysis was performed to study if this doubt could be confirmed in practice \cite{FRASER2014}.
+
+EvoSuite was run on 100 different Java classes respectively for both techniques. 
+It was found that indeed, the Whole approach had more difficulties when targeting difficult goals. 
+However, these cases are very few compared to the cases for which Whole performed significantly better.
+This thus confirmed that overall, \textit{whole-test-suite} is better. 
+
+
+

@@ -1,0 +1,86 @@
+\section{Methods} \label{methods}
+
+For automated test case generation to be optimal, the test suite needs to achieve high coverage while remaining relatively small for oracle generation \cite{FRASER2013}.
+But remaining small does not necessary mean the generated test cases are readable for developers.
+The target of our research is the difficulties regarding automated test case generation when using EvoSuite. 
+Hence, this paper focuses mainly on the difficulty to achieve certain coverage goals and difficulty to generate readable tests. 
+The two questions that arise from this focus are: what is the reason behind unfulfilled coverage goals and what can make EvoSuite generate illegible tests?
+
+\subsection{Experiment}
+
+In an attempt to provide answers, we execute an experiment, running the EvoSuite tool on 12 Java classes, each picked out of different projects, from open source software to our own. 
+These classes were chosen according to size and complexity, and our own opinion on the difficulty to test such class. 
+We estimated this difficulty based on whether a test would need a highly specific input to cover certain branches. 
+We also designed or modified a few classes especially for this experiment.
+The chosen classes are reported in Table \ref{classes}. 
+
+{\setlength{\extrarowheight}{1ex}
+\begin{table}[tbp]
+\begin{center}
+\small
+\begin{tabular}{ m{7cm} p{2.5cm} p{2cm} }
+\hline 
+Class & Project & Source \\ [0.5ex]
+\hline
+PrimeChecker & EvoTest & Own \\ [0.5ex] 
+IntStack & EvoTest & Own \\ [0.5ex]
+EnglishNumberToWords & NumberToWords & Real's HowTo  \\ [0.5ex]
+ColourPicker & EvoTest & Own \\ [0.5ex]
+org.joda.time.chrono.ISOChronology & Joda-Time & GitHub \\ [0.5ex]
+org.joda.time.DateTimeUtils & Joda-Time & GitHub \\ [0.5ex]
+com.google.common.base.Optional & Guava & GitHub \\ [0.5ex]
+com.google.common.base.Strings & Guava & GitHub \\ [0.5ex]
+com.google.common.math.IntMath  & Guava & GitHub \\ [0.5ex]
+com.google.common.graph.ImmutableGraph  & Guava & GitHub\\ [0.5ex]
+\hline
+\end{tabular}
+\end{center}
+\caption{For each class, the table reports which project the class belongs to, and where the project was found. \textit{Own} indicates the provenance is our own project.}
+\label{classes}
+\end{table}
+}
+
+For our experiment, the \textit{whole-test-suite} approach is used, because it is proved to be better than \textit{single-target} \cite{FRASER2014,FRASER2015}.
+This means that the \textit{whole} approach will most likely be used more often, so it is more interesting to execute this research with this approach. 
+
+After test suite generation with EvoSuite, we pursue the experiment by taking a look at three problems:
+
+\begin{enumerate}
+\item Does cyclomatic complexity of the class under test (CUT) have an influence on code coverage \cite{CYCLEX}?
+\item Does cyclomatic complexity of the CUT have an influence on test readability?
+\item Are there more specific reasons why EvoSuite fails at covering a branch?
+\end{enumerate}
+
+\subsection{Measurements}
+
+Using Cobertura, the cyclomatic complexity of the CUT is evaluated and reported along with the corresponding code coverage results \cite{COBERTURA}. 
+With these numbers, the correlation between cyclomatic complexity and code coverage can be calculated to determine whether code complexity has an influence on achieving coverage goals for that piece of code. 
+
+Pursuing with Cobertura and the cyclomatic complexity of the CUT, each member of our team rates the generated test on readability, with a grade from 1 to 5. 
+The rating is described in table \ref{readability}. 
+The test score is then averaged and correlated with the complexity, to see if code complexity has an influence on test readability. 
+Averaging each score given by team members shows a more reliable result on readability because the opinion of multiple people is taken into account. 
+Statistically speaking, this gives a better indication than just one person's opinion.
+
+{\setlength{\extrarowheight}{1ex}
+\begin{table}[tbp]
+\begin{center}
+\begin{tabular}{ c m{10cm} }
+\hline 
+Rating & Description \\ [0.5ex] 
+\hline
+1 & Diving into the code is required and some parts are still unclear. \\ [0.5ex] 
+2 & Diving into the code is required to actually understand the tests. \\ [0.5ex] 
+3 & Reading the tests a few times is required to understand them. \\ [0.5ex] 
+4 & The tests are explicit overall, but some parts require more reading.  \\ [0.5ex] 
+5 & The tests are explicit from the first read. \\ [0.5ex] 
+\hline
+\end{tabular}
+\end{center}
+\caption{For each generated set of test for a specific branch, the team gives a grade from 1 to 5 as according to this table.}
+\label{readability}
+\end{table}
+}
+
+For each method with uncovered code, we take a deeper look into the code itself in an attempt to find a reason behind the failure.
+We report possible explanations and motivate how those reasons may hold. 

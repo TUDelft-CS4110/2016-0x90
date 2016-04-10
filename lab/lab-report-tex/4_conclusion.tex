@@ -1,0 +1,19 @@
+\section{Conclusion and Discussions}
+
+EvoSuite is a very promising automated test case generation tool but it encounters some difficulties during the process.
+The generated tests can be obscure to read and various branches may remain uncovered.
+The main reason found to have unfulfilled goals comes from a lack of knowledge and ability to reason regarding the internal code structure to generate specific input values required to cover a branch.
+If there is a condition for which a specific input value is necessary, EvoSuite occasionally does not find the input value to reach that branch.
+
+This is a limitation of any black-box testing tool, which could be improved by analyzing the source code of the system under test.
+These improvements would shift the scope of EvoSuite being a black-box testing tool to a more white-box testing tendency.
+
+But a white-box approach does not solve the problems regarding automated test case generation.
+The PrimeChecker CUT shows another difficulty, even when applying white-testing techniques to EvoSuite: it requires a significant amount of resources and time to find the required input value to cover a specific branch, e.g. finding a very large prime number.
+
+The experiment for this research performed an exploratory analysis on the correlations between cyclomatic complexity, code coverage and test readability.
+Findings indicate that the cyclomatic complexity of the CUT has no apparent influence on the total branch coverage reached.
+Additionally, a weak positive correlation of 0.3044 between cyclomatic complexity and readability of the automatically generated tests is found.
+Due to the limited size of the dataset used, no definite conclusion can be drawn from these findings.
+However, it does indicate that it might be interesting to pursue an in-depth study on a larger scale that will look at the correlation between cyclomatic complexity and the readability of automatically generated tests.
+This target of research could have meaningful implication for the design of test oracles after automated test case generation. 

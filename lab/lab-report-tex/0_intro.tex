@@ -1,0 +1,47 @@
+\section{Introduction} 
+
+Software testing is an essential component of software development that allows developers to assess the reliability and correctness of a software product.
+Over the years, researchers have designed techniques to automatically produce test cases, where the code coverage criterion is the most commonly used guiding medium for the generation. 
+Now, with the newest tools available, it has become possible to generate entire test suites with high coverage. 
+One of these tools for Java software is the EvoSuite  framework \cite{FRASER2013}.
+
+\subsection{EvoSuite} \label{evosuite}
+
+EvoSuite is a tool that automatically generates JUnit tests with an evolutionary algorithm \cite{JUNIT,FRASER2013}. 
+This tool can be directly run from the command line or through the Eclipse or IntelliJ IDEA IDEs, with the options to either generate tests according to the \textit{whole-test-suite} or \textit{single-target} approach \cite{FRASER2013}. 
+It can also be configured to either generate tests class per class or for the entire project at once \cite{EVOSUITECLI}.
+
+EvoSuite works at the bytecode level and collects all necessary information for test case generation from the bytecode via Java Reflection \cite{FRASER2013}. 
+This means that EvoSuite can also be used for other programming languages that compile to Java bytecode (such as Scala or Groovy) \cite{VENNERS2008,SUBRAMANIAM2008}. 
+
+There is, however, one problem associated with automatic test case generation, known as the \textit{oracle problem} \cite{BARR2015}. 
+Automatic oracles that assert what the outcome of a test should be are possible when it comes to explicit events such as 'the program should not crash'. 
+But when dealing with more complex outcomes, human intervention is necessary to specify oracles \cite{FRASER2013}. 
+For this to be feasible, EvoSuite aims not only at high code coverage but also at small test suites that make manual oracle generation as easy as possible. 
+
+\subsection{Limitations of EvoSuite}
+
+But EvoSuite does not always get it right, and some coverage goals are occasionally not fulfilled \cite{FRASER2013}. 
+This can be explained by a few language-related problems that are encountered by the EvoSuite tool during test case generation.
+
+In particular, classes using Java Generics are problematic, as type erasure removes much of the useful information during compilation and all generic parameters are considered as Object. 
+To overcome this problem, EvoSuite always inserts an Integer object into container classes, in order to cast returned Object instances back to Integer \cite{FRASER2013}. 
+However, for a method with Generic input that is not compatible with an Integer object, things can go wrong. 
+
+Additionally, other factors may contribute to explaining why EvoSuite does not always get it right.
+There may be methods with inputs for which conscious human intervention is necessary, and there is no way for EvoSuite to know what the input is supposed to be \cite{FRASER2013}. 
+An instance of this problem is a method that takes an integer and returns \textit{true} if that integer is prime. For a test to cover the \textit{true} branch and check the correctness of the code, the input must be a prime number. 
+
+\subsection{This Research}
+
+This paper poses the question of difficulty behind automated test case generation with EvoSuite and dives into the reasons why such difficulty exists. 
+Why are certain pieces of code hard to generate tests for? 
+Does EvoSuite fail at generating tests because the code is bad or too complex?
+Does EvoSuite always generate readable tests to ease the generation of oracles by developers?
+
+After a recap of previous work done on and with EvoSuite in section \ref{work}, the methods for this research are explained in detail in section \ref{methods}.
+Then, the results are presented in section \ref{results}.
+Lastly, this paper concludes the research executed and brings up a discussion on the implication of the results found. 
+
+On a side note, an analysis of the usability of the EvoSuite tool is given. 
+This analysis provides a few details on the problems encountered when using EvoSuite and what difficulties regarding the usage of the framework possibly hindered the progress of this research. 
